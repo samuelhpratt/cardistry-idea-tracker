@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Text, View, Image } from "react-native";
 import styles from "./ListElementStyles";
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+
 
 type Props = {
   id: number,
@@ -44,6 +46,7 @@ class ListElement extends Component<Props> {
             {this.renderTags()}
           </View>
         </View>
+        <Icon name="chevron-right" size={30} color="#888" style={styles.rightButton} />
       </View>
     );
   }

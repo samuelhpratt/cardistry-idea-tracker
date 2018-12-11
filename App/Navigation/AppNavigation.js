@@ -4,6 +4,7 @@ import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import ListScreen from '../Containers/ListScreen/ListScreen'
 import SettingsScreen from '../Containers/SettingsScreen/SettingsScreen'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import styles from './NavigationStyles'
 
 const TabNavigator = createBottomTabNavigator({
     CameraScreen: {
@@ -11,11 +12,8 @@ const TabNavigator = createBottomTabNavigator({
 
         navigationOptions: {
             tabBarLabel:"Record",
-            tabBarIcon: ({ focused }) => (
-                focused ?
-                    <Icon name="lightbulb-on" size={30} color="#000" />
-                    :
-                    <Icon name="lightbulb-on" size={30} color="#555" />
+            tabBarIcon: ({ tintColor }) => (
+                <Icon name="lightbulb-on" size={30} color={tintColor} />
             ),
         },
     },
@@ -24,11 +22,8 @@ const TabNavigator = createBottomTabNavigator({
 
         navigationOptions: {
             tabBarLabel:"List",
-            tabBarIcon: ({ focused }) => (
-                focused ?
-                    <Icon name="home" size={30} color="#000" />
-                    :
-                    <Icon name="home" size={30} color="#555" />
+            tabBarIcon: ({ tintColor }) => (
+                <Icon name="view-list" size={30} color={tintColor} />
             ),
         },
     },
@@ -37,17 +32,19 @@ const TabNavigator = createBottomTabNavigator({
 
         navigationOptions: {
             tabBarLabel:"Settings",
-            tabBarIcon: ({ focused }) => (
-                focused ?
-                    <Icon name="settings" size={30} color="#000" />
-                    :
-                    <Icon name="settings" size={30} color="#555" />
+            tabBarIcon: ({ tintColor }) => (
+                <Icon name="settings" size={30} color={tintColor} />
             ),
         },
     },
 },
 {
     initialRouteName: 'ListScreen',
+    tabBarOptions: {
+        style: styles.tabBar,
+        activeTintColor: "#000",
+        inactiveTintColor: "#777"
+    },
 });
 
 export default createAppContainer(TabNavigator);

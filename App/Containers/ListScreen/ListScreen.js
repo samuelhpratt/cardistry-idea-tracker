@@ -71,7 +71,7 @@ class ListScreen extends Component<Props, State> {
       tagData: placeholderTags,
       fetchingIdeaData: false,
       hasIdeaData: false,
-      usePlaceholder: true, // should it use the placeholder data above?
+      usePlaceholder: false, // should it use the placeholder data above?
     }
   }
 
@@ -120,8 +120,8 @@ class ListScreen extends Component<Props, State> {
 
   render() {
     return (
-      <ScrollView contentContainerStyle={{ backgroundColor: "#ddd", padding: 2, alignSelf: "stretch", }}>
-      {this.renderList()}
+      <ScrollView contentContainerStyle={styles.listContainer}>
+        {this.renderList()}
       </ScrollView>
     );
   }

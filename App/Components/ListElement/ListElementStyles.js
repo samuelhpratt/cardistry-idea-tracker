@@ -32,13 +32,18 @@ export default StyleSheet.create({
     flexDirection: "row",
   },
   tagIcon: {
-    width: 36,
-    height: 36,
-    borderRadius: 36 / 2,
+    width: 38,
+    height: 38,
+    borderRadius: 38 / 2,
     textAlign: "center",
     textAlignVertical: "center",
     margin: 2,
 
     fontSize: 18,
-  }
+  },
+  rightButton: {
+    paddingTop: 25,
+    paddingBottom: 25,
+    paddingLeft: 10,
+  },
 })
