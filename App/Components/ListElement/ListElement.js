@@ -46,7 +46,6 @@ class ListElement extends Component<Props> {
             {this.renderTags()}
           </View>
         </View>
-        <Icon name="chevron-right" size={30} color="#888" style={styles.rightButton} />
       </View>
     );
   }

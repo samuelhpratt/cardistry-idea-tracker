@@ -6,7 +6,8 @@ export default StyleSheet.create({
     alignSelf: "stretch",
     flexDirection: "row",
     padding: 10,
-    margin: 2, 
+    margin: 4, 
+    borderRadius: 8,
   },
   thumbnail: {
     width: 80,

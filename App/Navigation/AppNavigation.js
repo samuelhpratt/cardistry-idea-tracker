@@ -42,8 +42,8 @@ const TabNavigator = createBottomTabNavigator({
     initialRouteName: 'ListScreen',
     tabBarOptions: {
         style: styles.tabBar,
-        activeTintColor: "#000",
-        inactiveTintColor: "#777"
+        activeTintColor: "#fff",
+        inactiveTintColor: "#aaa"
     },
 });
 
