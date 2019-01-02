@@ -170,7 +170,7 @@ class ListScreen extends Component<Props, State> {
       searchString: '',
       fetchingIdeaData: false,
       hasIdeaData: false,
-      usePlaceholder: true, // should it use the placeholder data above?
+      usePlaceholder: false, // should it use the placeholder data above?
       filtersOpen: false,
       filtersAnimation: new Animated.Value(60),
     }

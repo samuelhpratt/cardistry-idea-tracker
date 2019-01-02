@@ -82,6 +82,18 @@
 		<string>Inter-UI-MediumItalic.ttf</string>
 		<string>Inter-UI-SemiBold.ttf</string>
 		<string>Inter-UI-SemiBoldItalic.ttf</string>
+		<string>InterUI-Black.ttf</string>
+		<string>InterUI-BlackItalic.ttf</string>
+		<string>InterUI-Bold.ttf</string>
+		<string>InterUI-BoldItalic.ttf</string>
+		<string>InterUI-ExtraBold.ttf</string>
+		<string>InterUI-ExtraBoldItalic.ttf</string>
+		<string>InterUI-Italic.ttf</string>
+		<string>InterUI-Medium.ttf</string>
+		<string>InterUI-MediumItalic.ttf</string>
+		<string>InterUI-Regular.ttf</string>
+		<string>InterUI-SemiBold.ttf</string>
+		<string>InterUI-SemiBoldItalic.ttf</string>
 	</array>
 </dict>
 </plist>
