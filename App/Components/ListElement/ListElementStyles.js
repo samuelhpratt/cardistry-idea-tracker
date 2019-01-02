@@ -29,6 +29,7 @@ export default StyleSheet.create({
   detailsText: {
     color: "#fff",
     fontSize: 20,
+    fontFamily: "InterUI-Regular",
   },
   tagsWrapper: {
     flexDirection: "row",
@@ -41,6 +42,7 @@ export default StyleSheet.create({
     textAlignVertical: "center",
     margin: 2,
     fontSize: 18,
+    fontFamily: "InterUI-Regular",
   },
   rightButton: {
     paddingTop: 25,

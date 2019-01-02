@@ -21,6 +21,7 @@ export default StyleSheet.create({
     height: 36,
     fontSize: 20,
     color: '#fff',
+    fontFamily: "InterUI-Regular",
     borderRadius: 18,
     backgroundColor: '#2A2F42',
     padding: 1,
@@ -45,6 +46,7 @@ export default StyleSheet.create({
     paddingLeft: 12,
     paddingRight: 12,
     fontSize: 18,
+    fontFamily: "InterUI-Regular",
   },
   tagSelected: {
     color: '#FFF',
