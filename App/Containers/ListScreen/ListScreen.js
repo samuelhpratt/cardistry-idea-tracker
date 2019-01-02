@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, ScrollView, AsyncStorage, TextInput } from "react-native";
+import { Text, View, ScrollView, AsyncStorage, TextInput, Animated } from "react-native";
 import ListElement from "../../Components/ListElement/ListElement"
 import styles from "./ListScreenStyles";
 import tagColours from "../../Themes/TagColours"
@@ -154,7 +154,8 @@ type State = {
   fetchingIdeaData: boolean,
   hasIdeaData: boolean,
   usePlaceholder: boolean,
-  filtersVisible: boolean,
+  filtersOpen: boolean,
+  filtersAnimation: any,
 }
 
 class ListScreen extends Component<Props, State> { 
@@ -164,12 +165,14 @@ class ListScreen extends Component<Props, State> {
     this.state = {
       ideaData: [],
       tagData: placeholderTags,
+      tagFilter: [],
       ideasToDisplay: [],
       searchString: '',
       fetchingIdeaData: false,
       hasIdeaData: false,
       usePlaceholder: false, // should it use the placeholder data above?
-      filtersVisible: false,
+      filtersOpen: false,
+      filtersAnimation: new Animated.Value(60),
     }
   }
 
@@ -201,10 +204,9 @@ class ListScreen extends Component<Props, State> {
   }
 
   updateListFilters = () => {
-    console.log(this.state.searchString)
-    const filteredIdeas = this.state.ideaData  
-    
-    //add tag search here
+    const filteredIdeas = this.state.ideaData.filter(
+      i => !this.state.tagFilter.some(t => !i.tags.includes(t))
+    )  
 
     let searchedIdeas
 
@@ -238,28 +240,83 @@ class ListScreen extends Component<Props, State> {
     }, () => (this.updateListFilters()))
   }
 
-  renderFilters = () => {
-    if (this.state.filtersVisible) {
-      return (
-        <View style={styles.filterTopBar}>
+  toggleFilters = () => {
+    let initialValue = this.state.filtersOpen? this.state.maxHeight + 60 : 60,
+        finalValue   = this.state.filtersOpen? 60 : this.state.maxHeight + 60;
 
-        </View>
-      )
+    this.setState({
+      filtersOpen : !this.state.filtersOpen
+    });
+
+    this.state.filtersAnimation.setValue(initialValue);
+    Animated.timing(
+        this.state.filtersAnimation,
+        {
+            toValue: finalValue
+        }
+    ).start(); 
+  }
+
+  _setMaxHeight(event){
+    this.setState({
+      maxHeight: event.nativeEvent.layout.height,
+    })
+  }
+
+  tagFilterPressed = (tagId) => {
+    if (this.state.tagFilter.includes(tagId)) {
+      this.setState(prevState => ({
+        tagFilter: prevState.tagFilter.filter((id) => {
+          return id !== tagId
+        })
+      }),
+      () => (this.updateListFilters()))
+    } else {
+      this.setState(prevState => ({
+        tagFilter: [...prevState.tagFilter, tagId]
+      }),
+      () => (this.updateListFilters()))
     }
+  }
+
+  renderTagsList = () => {
+    tagList = this.state.tagData?.map(t => {
+      return (
+        <Text
+          key={t.id} 
+          style={[styles.tag, t.style, this.state.tagFilter.includes(t.id)? styles.tagSelected : null]} 
+          onPress={() => this.tagFilterPressed(t.id)}
+        >
+          {t.title}
+        </Text>
+      )
+    })
+    return (tagList)
+  }
+
+  renderFilters = () => {
     return (
-      <View style={styles.filterTopBarInactive}>
-        <TextInput
-          style={styles.searchInputBar}
-          placeholder={"Search..."}
-          placeholderTextColor={"#91939E"}
-          onChangeText={this.onSearchChangedText}
-        />
-        <Icon name="tune" size={38} color="#91939E" />
-      </View>
+      <Animated.View style={[styles.header,{height: this.state.filtersAnimation}]}>
+        <View style={styles.searchWrapper}>
+          <TextInput
+            style={styles.searchInputBar}
+            placeholder={"Search..."}
+            placeholderTextColor={"#91939E"}
+            onChangeText={this.onSearchChangedText}
+          />
+          <Icon name="tune" size={38} color={this.state.filtersOpen? "#FFF" : "#91939E"} onPress={this.toggleFilters} />
+        </View>
+        
+        <View style={styles.filtersWrapper} onLayout={this._setMaxHeight.bind(this)}>
+          <View style={styles.tagsWrapper}>
+            {this.renderTagsList()}
+          </View>
+        </View>
+      </Animated.View>
     )
   }
 
-  renderList = () => {
+  renderIdeasList = () => {
     if (this.state.hasIdeaData && !this.state.fetchingIdeaData) {
       ideaList = this.state.ideasToDisplay.map(e => {
         return (
@@ -299,7 +356,7 @@ class ListScreen extends Component<Props, State> {
     return (
       <View style={styles.wrapper}>
         {this.renderFilters()} 
-        {this.renderList()}
+        {this.renderIdeasList()}
       </View>
       
     );

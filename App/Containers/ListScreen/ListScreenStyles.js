@@ -1,25 +1,21 @@
 import { StyleSheet } from "react-native"
 
 export default StyleSheet.create({
-  listContainer: {
-    backgroundColor: "#1F2235",
-    padding: 6,
-    alignSelf: "stretch", 
-  },
-  loadingContainer: {
-    backgroundColor: "#1F2235",
+  wrapper: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: '#1F2235',
   },
-  filterTopBarInactive: {
+  header: {
+    backgroundColor: '#1A1C2B',
+  },
+  searchWrapper: {
     height: 60,
+    padding: 8,
     flexDirection: "row",
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 10,
     backgroundColor: '#1A1C2B',
-  },
+  }, 
   searchInputBar: {
     flex: 1,
     height: 36,
@@ -32,8 +28,37 @@ export default StyleSheet.create({
     paddingRight: 14,
     marginRight: 8,
   },
-  wrapper: {
+  filtersWrapper: {
+    backgroundColor: '#141521',
+  },
+  tagsWrapper: {
+    flexDirection: "row",
+    flexWrap: 'wrap',
+    padding: 6,
+  },
+  tag: {
+    height: 38,
+    borderRadius: 38 / 2,
+    textAlign: "center",
+    textAlignVertical: "center",
+    margin: 4,
+    paddingLeft: 12,
+    paddingRight: 12,
+    fontSize: 18,
+  },
+  tagSelected: {
+    color: '#FFF',
+  },
+  listContainer: {
+    backgroundColor: "#1F2235",
+    padding: 6,
+    alignSelf: "stretch", 
+    flexGrow: 1,
+  },
+  loadingContainer: {
+    backgroundColor: "#1F2235",
     flex: 1,
-    backgroundColor: '#000',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 })
