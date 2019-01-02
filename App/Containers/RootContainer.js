@@ -15,7 +15,7 @@ type State = {
 class RootContainer extends Component<Props, State> {
   render() {
     return (
-      <View>
+      <View style={{backgroundColor: "#1F2235"}}>
         <StatusBar barStyle='light-content' />
         <AppNavigation />
       </View>

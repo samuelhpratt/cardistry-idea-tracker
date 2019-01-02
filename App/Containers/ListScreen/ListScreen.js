@@ -2,65 +2,80 @@ import React, { Component } from "react";
 import { Text, View, ScrollView, AsyncStorage, TextInput } from "react-native";
 import ListElement from "../../Components/ListElement/ListElement"
 import styles from "./ListScreenStyles";
+import tagColours from "../../Themes/TagColours"
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 const placeholderIdeas = [
   {
     id: 1,
-    title: "Move 1",
+    title: "Nuke",
     thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
-    date: "6/4/2016",
-    tags: [2, 3, 4],
+    date: "6/4/16",
+    tags: [2, 3, 9],
   },
   {
     id: 2,
-    title: "Move 2",
+    title: "Passport",
     thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
-    date: "2/5/2018",
-    tags: [1, 4, 7],
+    date: "2/5/18",
+    tags: [2, 3],
   },
   {
    id: 3,
-    title: "Move 3",
+    title: "USB A",
     thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
-    date: "10/4/2017",
-    tags: [1, 3],
+    date: "10/4/17",
+    tags: [2, 3],
   }, 
   {
     id: 4,
-    title: "Move 4",
+    title: "Limbo",
     thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
-    date: "28/11/2006",
-    tags: [2, 5, 6],
+    date: "28/11/06",
+    tags: [1, 3],
   },
   {
     id: 5,
-    title: "Move 5",
+    title: "Gurnard Fan",
     thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
-    date: "2/1/2018",
-    tags: [1, 4],
+    date: "2/1/18",
+    tags: [1, 6],
   },
   {
    id: 6,
-    title: "Move 6",
+    title: "Cragsman",
     thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
-    date: "10/4/2018",
-    tags: [2, 3, 5, 8],
+    date: "10/4/18",
+    tags: [2, 3],
   }, 
   {
     id: 7,
-    title: "Move 7",
+    title: "Updog",
     thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
-    date: "2/7/2017",
-    tags: [2, 6, 7],
+    date: "2/7/17",
+    tags: [2, 3, 7],
   },
   {
    id: 8,
-    title: "Move 8",
+    title: "Crevice",
     thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
-    date: "10/7/2018",
-    tags: [1, 8],
+    date: "10/7/18",
+    tags: [1, 3],
   }, 
+  {
+    id: 9,
+     title: "Flare",
+     thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
+     date: "2/7/18",
+     tags: [2, 3, 7, 9],
+   },
+   {
+    id: 10,
+     title: "No Strings Attached",
+     thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
+     date: "14/8/18",
+     tags: [2, 4, 7, 8],
+   },
 ]
 
 const placeholderTags = [
@@ -68,51 +83,67 @@ const placeholderTags = [
     id: 1,
     title: "One Handed",
     initials: "OH", 
-    color: "#ffdddd",
+    style: tagColours.c4,
   },
   {
     id: 2,
     title: "Two Handed",
     initials: "TH",
-    color: "#ddffff",
+    style: tagColours.c7,
   },
   {
    id: 3,
     title: "Packet Cut",
     initials: "PC",
-    color: "#ffeedd",
+    style: tagColours.c1,
   },
   {
     id: 4,
      title: "Isolation",
      initials: "I",
-     color: "#ffffdd",
+     style: tagColours.c2,
    },
    {
     id: 5,
     title: "Aerial",
     initials: "A", 
-    color: "#ddffdd",
+    style: tagColours.c5,
   },
   {
     id: 6,
     title: "Fan/Spread",
     initials: "FS",
-    color: "#ddecff",
+    style: tagColours.c8,
   },
   {
    id: 7,
     title: "Single Card",
     initials: "SC",
-    color: "#e6ddff",
+    style: tagColours.c6,
   },
   {
     id: 8,
      title: "Magical",
      initials: "M",
-     color: "#ffddfc",
+     style: tagColours.c3,
+   },
+   {
+    id: 9,
+     title: "Display",
+     initials: "D",
+     style: tagColours.c9,
+   },
+   {
+    id: 10,
+     title: "Production",
+     initials: "P",
+     style: tagColours.c10,
    },
 ]
+
+type Props = {
+  navigation: Object,
+}
 
 type State = {
   ideaData: any,
@@ -185,9 +216,19 @@ class ListScreen extends Component<Props, State> {
       searchedIdeas = filteredIdeas
     }
 
+    searchedIdeas.sort((a, b) => {
+      var textA = a.title.toLowerCase();
+      var textB = b.title.toLowerCase();
+      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    })
+
     this.setState({
       ideasToDisplay: searchedIdeas,
     })
+  }
+
+  onListElementPressed = (idea) => {
+    this.props.navigation.navigate('IdeaScreen', {'idea': idea})
   }
 
   onSearchChangedText = (value) => {
@@ -210,9 +251,10 @@ class ListScreen extends Component<Props, State> {
         <TextInput
           style={styles.searchInputBar}
           placeholder={"Search..."}
+          placeholderTextColor={"#91939E"}
           onChangeText={this.onSearchChangedText}
         />
-        <Icon name="tune" size={38} color="#aaa" />
+        <Icon name="tune" size={38} color="#91939E" />
       </View>
     )
   }
@@ -222,11 +264,14 @@ class ListScreen extends Component<Props, State> {
       ideaList = this.state.ideasToDisplay.map(e => {
         return (
           <ListElement key={e.id}
-            id={e.id}
-            title={e.title}
-            thumbnail={e.thumbnail}
-            date={e.date}
-            tags={this.state.tagData.filter(t => (e.tags.includes(t.id)))}              
+            idea={{
+              id: e.id,
+              title: e.title,
+              thumbnail: e.thumbnail,
+              date: e.date,
+              tags: this.state.tagData.filter(t => (e.tags.includes(t.id))),
+            }}
+            onPress={this.onListElementPressed}            
           />
         )
       })

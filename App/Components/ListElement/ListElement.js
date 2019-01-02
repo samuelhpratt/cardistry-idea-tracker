@@ -1,29 +1,26 @@
 import React, { Component } from "react";
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, TouchableWithoutFeedback } from "react-native";
 import styles from "./ListElementStyles";
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-
 
 type Props = {
-  id: number,
-  title: string,
-  thumbnail: string,
-  date: string,
-  tags: [],
+  idea: Object,
+  onPress: () => {},
 }
 
 class ListElement extends Component<Props> {
   static defaultProps = {
-    title: "",
-    thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg", //generic placeholder image?
-    date: "",
-    tags: null,
+    idea: null,
+    onPress: () => void(0),
   };
 
+  elementPressed = () => {
+    this.props.onPress(this.props.idea)
+  }
+
   renderTags = () => {
-    tagList = this.props.tags.map(t => {
+    tagList = this.props.idea.tags.map(t => {
       return (
-        <Text key={t.id} style={[styles.tagIcon, {backgroundColor: t.color}]}>
+        <Text key={t.id} style={[styles.tagIcon, t.style]}>
           {t.initials}
         </Text>
       )
@@ -33,20 +30,22 @@ class ListElement extends Component<Props> {
   
   render() {
     return (
-      <View style={styles.elementWrapper}>
-        <Image style={styles.thumbnail}
-          source={{uri: this.props.thumbnail}}
-        ></Image>
-        <View style={styles.infoWrapper}>
-          <View style={styles.detailsWrapper}>
-            <Text style={styles.detailsText}>{this.props.title}</Text>
-            <Text style={styles.detailsText}>{this.props.date}</Text>
-          </View>
-          <View style={styles.tagsWrapper}>
-            {this.renderTags()}
+      <TouchableWithoutFeedback onPress={() => this.elementPressed()}>
+        <View style={styles.elementWrapper}>
+          <Image style={styles.thumbnail}
+            source={{uri: this.props.idea.thumbnail}}
+          />
+          <View style={styles.infoWrapper}>
+            <View style={styles.detailsWrapper}>
+              <Text style={styles.detailsText}>{this.props.idea.title}</Text>
+              <Text style={styles.detailsText}>{this.props.idea.date}</Text>
+            </View>
+            <View style={styles.tagsWrapper}>
+              {this.renderTags()}
+            </View>
           </View>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
     );
   }
 }

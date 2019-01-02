@@ -2,12 +2,12 @@ import { StyleSheet } from "react-native"
 
 export default StyleSheet.create({
   listContainer: {
-    backgroundColor: "#000",
-    padding: 4,
+    backgroundColor: "#1F2235",
+    padding: 6,
     alignSelf: "stretch", 
   },
   loadingContainer: {
-    backgroundColor: "#000",
+    backgroundColor: "#1F2235",
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -18,17 +18,15 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 10,
-    backgroundColor: '#222',
+    backgroundColor: '#1A1C2B',
   },
   searchInputBar: {
     flex: 1,
     height: 36,
     fontSize: 20,
-    borderWidth: 1,
-    borderColor: '#aaa',
-    borderStyle: 'solid',
+    color: '#fff',
     borderRadius: 18,
-    backgroundColor: '#fff',
+    backgroundColor: '#2A2F42',
     padding: 1,
     paddingLeft: 14,
     paddingRight: 14,

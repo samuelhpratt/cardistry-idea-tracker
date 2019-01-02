@@ -2,17 +2,18 @@ import { StyleSheet } from "react-native"
 
 export default StyleSheet.create({
   elementWrapper: {
-    backgroundColor: "#fff",
+    backgroundColor: "#2A2F42",
     alignSelf: "stretch",
     flexDirection: "row",
     padding: 10,
-    margin: 4, 
+    margin: 2, 
     borderRadius: 8,
   },
   thumbnail: {
     width: 80,
     height: 80,
     alignSelf: "flex-start",
+    borderRadius: 6,
   },
   infoWrapper: {
     flex: 1,
@@ -26,7 +27,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
   },
   detailsText: {
-    color: "#222",
+    color: "#fff",
     fontSize: 20,
   },
   tagsWrapper: {
@@ -39,7 +40,6 @@ export default StyleSheet.create({
     textAlign: "center",
     textAlignVertical: "center",
     margin: 2,
-
     fontSize: 18,
   },
   rightButton: {
