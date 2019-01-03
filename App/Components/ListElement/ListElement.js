@@ -20,9 +20,12 @@ class ListElement extends Component<Props> {
   renderTags = () => {
     tagList = this.props.idea.tags.map(t => {
       return (
-        <Text key={t.id} style={[styles.tagIcon, t.style]}>
-          {t.initials}
-        </Text>
+        <View key={t.id} style={[styles.tagBackground, t.style]}>
+          <Text style={[styles.tagIcon, t.style]}>
+            {t.initials}
+          </Text>
+        </View>
+       
       )
     })
     return (tagList)

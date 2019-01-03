@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, ScrollView, AsyncStorage, TextInput, Animated } from "react-native";
+import { Text, View, ScrollView, AsyncStorage, TextInput, Animated, TouchableOpacity } from "react-native";
 import ListElement from "../../Components/ListElement/ListElement"
 import styles from "./ListScreenStyles";
 import tagColours from "../../Themes/TagColours"
@@ -282,13 +282,17 @@ class ListScreen extends Component<Props, State> {
   renderTagsList = () => {
     tagList = this.state.tagData?.map(t => {
       return (
-        <Text
+        <TouchableOpacity
           key={t.id} 
-          style={[styles.tag, t.style, this.state.tagFilter.includes(t.id)? styles.tagSelected : null]} 
+          style={[styles.tagBackground, t.style]} 
           onPress={() => this.tagFilterPressed(t.id)}
         >
-          {t.title}
-        </Text>
+          <Text
+            style={[styles.tagText, t.style, this.state.tagFilter.includes(t.id)? styles.tagSelected : null]} 
+          >
+            {t.title}
+          </Text>
+        </TouchableOpacity>
       )
     })
     return (tagList)

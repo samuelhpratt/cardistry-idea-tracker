@@ -7,6 +7,7 @@ export default StyleSheet.create({
   },
   header: {
     backgroundColor: '#1A1C2B',
+    overflow: 'hidden',
   },
   searchWrapper: {
     height: 60,
@@ -37,14 +38,18 @@ export default StyleSheet.create({
     flexWrap: 'wrap',
     padding: 6,
   },
-  tag: {
+  tagBackground: {
     height: 38,
     borderRadius: 38 / 2,
-    textAlign: "center",
-    textAlignVertical: "center",
     margin: 4,
     paddingLeft: 12,
     paddingRight: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  tagText: {
+    textAlign: "center",
+    textAlignVertical: "center",
     fontSize: 18,
     fontFamily: "InterUI-Regular",
   },

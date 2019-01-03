@@ -28,9 +28,11 @@ class IdeaScreen extends Component<Props, State> {
   renderTags = () => {
     tagList = this.state.idea?.tags.map(t => {
       return (
-        <Text key={t.id} style={[styles.tag, t.style]}>
-          {t.title}
-        </Text>
+        <View key={t.id} style={[styles.tagBackground, t.style]}>
+          <Text style={[styles.tag, t.style]}>
+            {t.title}
+          </Text>
+        </View>
       )
     })
     return (tagList)

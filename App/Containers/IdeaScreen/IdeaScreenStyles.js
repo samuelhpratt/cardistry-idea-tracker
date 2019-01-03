@@ -46,15 +46,19 @@ export default StyleSheet.create({
     flexWrap: 'wrap',
     padding: 4,
   },
-  tag: {
+  tagBackground: {
     height: 38,
     borderRadius: 38 / 2,
-    textAlign: "center",
-    textAlignVertical: "center",
     margin: 4,
     paddingLeft: 12,
     paddingRight: 12,
-
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  tagText: {
+    textAlign: "center",
+    textAlignVertical: "center",
     fontSize: 18,
+    fontFamily: "InterUI-Regular",
   },
 })

@@ -34,13 +34,17 @@ export default StyleSheet.create({
   tagsWrapper: {
     flexDirection: "row",
   },
-  tagIcon: {
+  tagBackground: {
     width: 38,
     height: 38,
     borderRadius: 38 / 2,
+    margin: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  tagText: {
     textAlign: "center",
     textAlignVertical: "center",
-    margin: 2,
     fontSize: 18,
     fontFamily: "InterUI-Regular",
   },
