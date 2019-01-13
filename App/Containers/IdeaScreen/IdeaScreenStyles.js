@@ -34,12 +34,12 @@ export default StyleSheet.create({
     color: "#fff",
     fontSize: 18,   
   },
-  videoPreview: {
+  videoWrapper: {
     height: 400,
     backgroundColor: "#000",
   },
-  thumbnail: {
-    
+  video: {
+    flex: 1,
   },
   tagsWrapper: {
     flexDirection: "row",

@@ -7,11 +7,20 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 const placeholderIdeas = [
   {
+    id: 0,
+    title: "No Strings Attached",
+    thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
+    date: "14/8/18",
+    tags: [2, 4, 7, 8],
+    videoUri: "content://media/external/file/87204",
+  },
+  {
     id: 1,
     title: "Nuke",
     thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
     date: "6/4/16",
     tags: [2, 3, 9],
+    videoUri: "content://media/external/file/87204",
   },
   {
     id: 2,
@@ -19,6 +28,7 @@ const placeholderIdeas = [
     thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
     date: "2/5/18",
     tags: [2, 3],
+    videoUri: "content://media/external/file/87204",
   },
   {
    id: 3,
@@ -26,6 +36,7 @@ const placeholderIdeas = [
     thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
     date: "10/4/17",
     tags: [2, 3],
+    videoUri: "content://media/external/file/87204",
   }, 
   {
     id: 4,
@@ -33,6 +44,7 @@ const placeholderIdeas = [
     thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
     date: "28/11/06",
     tags: [1, 3],
+    videoUri: "content://media/external/file/87204",
   },
   {
     id: 5,
@@ -40,6 +52,7 @@ const placeholderIdeas = [
     thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
     date: "2/1/18",
     tags: [1, 6],
+    videoUri: "content://media/external/file/87204",
   },
   {
    id: 6,
@@ -47,13 +60,15 @@ const placeholderIdeas = [
     thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
     date: "10/4/18",
     tags: [2, 3],
+    videoUri: "content://media/external/file/87204",
   }, 
   {
     id: 7,
     title: "Updog",
     thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
     date: "2/7/17",
-    tags: [2, 3, 7],
+    tags: [1, 3],
+    videoUri: "content://media/external/file/87204",
   },
   {
    id: 8,
@@ -61,21 +76,16 @@ const placeholderIdeas = [
     thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
     date: "10/7/18",
     tags: [1, 3],
+    videoUri: "content://media/external/file/87204",
   }, 
   {
     id: 9,
-     title: "Flare",
-     thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
-     date: "2/7/18",
-     tags: [2, 3, 7, 9],
-   },
-   {
-    id: 10,
-     title: "No Strings Attached",
-     thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
-     date: "14/8/18",
-     tags: [2, 4, 7, 8],
-   },
+    title: "Flare",
+    thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
+    date: "2/7/18",
+    tags: [2, 3, 7, 9],
+    videoUri: "content://media/external/file/87204",
+  },
 ]
 
 const placeholderTags = [
@@ -192,11 +202,11 @@ class ListScreen extends Component<Props, State> {
   }
 
   usePlaceholderIdeaData = () => {
-    console.warn("No data found - using placeholder")
     this.setState({ 'ideaData': placeholderIdeas, "fetchingIdeaData": false, "hasIdeaData": true }, () => {
       this.updateStoredIdeaData()
       this.updateListFilters()
     })
+    AsyncStorage.setItem('lastId', JSON.stringify(this.state.ideaData.length - 1))
   }
 
   updateStoredIdeaData = () => {
@@ -234,7 +244,6 @@ class ListScreen extends Component<Props, State> {
   }
 
   onSearchChangedText = (value) => {
-    console.log(value)
     this.setState({
       searchString: value,
     }, () => (this.updateListFilters()))
@@ -284,11 +293,11 @@ class ListScreen extends Component<Props, State> {
       return (
         <TouchableOpacity
           key={t.id} 
-          style={[styles.tagBackground, t.style]} 
+          style={[styles.tagBackground, {backgroundColor: t.style.backgroundColor}]} 
           onPress={() => this.tagFilterPressed(t.id)}
         >
           <Text
-            style={[styles.tagText, t.style, this.state.tagFilter.includes(t.id)? styles.tagSelected : null]} 
+            style={[styles.tagText, {color: t.style.color}, this.state.tagFilter.includes(t.id)? styles.tagSelected : null]} 
           >
             {t.title}
           </Text>
@@ -331,6 +340,7 @@ class ListScreen extends Component<Props, State> {
               thumbnail: e.thumbnail,
               date: e.date,
               tags: this.state.tagData.filter(t => (e.tags.includes(t.id))),
+              videoUri: e.videoUri,
             }}
             onPress={this.onListElementPressed}            
           />

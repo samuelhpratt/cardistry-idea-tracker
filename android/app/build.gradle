@@ -107,6 +107,10 @@ android {
             abiFilters "armeabi-v7a", "x86"
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     splits {
         abi {
             reset()
@@ -137,6 +141,8 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-video')
+    compile project(':react-native-image-picker')
     compile project(':react-native-vector-icons')
     compile project(':react-native-gesture-handler')
     implementation fileTree(dir: "libs", include: ["*.jar"])

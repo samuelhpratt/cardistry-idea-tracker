@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, Animated, Easing } from 'react-native';
 import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
 import ListScreen from '../Containers/ListScreen/ListScreen'
+import UploadScreen from '../Containers/UploadScreen/UploadScreen'
 import IdeaScreen from '../Containers/IdeaScreen/IdeaScreen'
 import SettingsScreen from '../Containers/SettingsScreen/SettingsScreen'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -44,6 +45,16 @@ const TabNavigator = createBottomTabNavigator({
             tabBarLabel:"Record",
             tabBarIcon: ({ tintColor }) => (
                 <Icon name="lightbulb-on" size={30} color={tintColor} />
+            ),
+        },
+    },
+    UploadScreen: {
+        screen: UploadScreen, //placeholder
+
+        navigationOptions: {
+            tabBarLabel:"New",
+            tabBarIcon: ({ tintColor }) => (
+                <Icon name="plus" size={30} color={tintColor} />
             ),
         },
     },

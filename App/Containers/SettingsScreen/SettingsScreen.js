@@ -21,12 +21,14 @@ class SettingsScreen extends Component<State> {
 
   render() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <TextInput style={{backgroundColor: "#ddd"}} autoCapitalize = 'none'
-          onChangeText = {this.setValue}/>
-        <Text>
-          {this.state?.testValue}
-        </Text>
+      <View style={styles.background}>
+        <View style={styles.wrapper}>
+          <TextInput style={styles.input} autoCapitalize = 'none'
+            onChangeText = {this.setValue}/>
+          <Text style={styles.text}>
+            {this.state?.testValue}
+          </Text>
+        </View>
       </View>
     );
   }
