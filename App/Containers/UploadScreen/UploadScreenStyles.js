@@ -1,20 +1,21 @@
 import { StyleSheet } from "react-native"
+import colors from "../../Themes/Colours"
 
 export default StyleSheet.create({
   background: {
     flex: 1,
-    backgroundColor: "#1F2235",
+    backgroundColor: colors.background,
   },
   wrapper: {
     flex: 1,
-    backgroundColor: "#2A2F42",
+    backgroundColor: colors.white,
     margin: 8, 
     borderRadius: 8,
   },
   videoWrapper: {
     marginTop: 10,
     height: 400,
-    backgroundColor: "#141521",
+    backgroundColor: "#bbb",
   },
   video: {
     flex: 1,
@@ -25,7 +26,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     justifyContent: 'center',
-    backgroundColor: "#414866",
+    backgroundColor: colors.white,
     borderRadius: 8,
   },
   thumbnailWrapper: {
@@ -33,7 +34,7 @@ export default StyleSheet.create({
     height: 150,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: "#141521",
+    backgroundColor: "#bbb",
     borderRadius: 4,
     overflow: 'hidden',
   },
@@ -41,7 +42,7 @@ export default StyleSheet.create({
     padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: "#414866",
+    backgroundColor: colors.white,
     borderRadius: 8,
   },
   buttonText: {
@@ -49,7 +50,7 @@ export default StyleSheet.create({
     textAlign: "center",
     textAlignVertical: "center",
     fontFamily: "InterUI-Regular",
-    color: "#fff",
+    color: colors.black,
   },
   thumbnail: {
     width: 140,
@@ -61,10 +62,10 @@ export default StyleSheet.create({
   titleInput: {
     height: 36,
     fontSize: 20,
-    color: '#fff',
+    color: colors.black,
     fontFamily: "InterUI-Regular",
     borderRadius: 4,
-    backgroundColor: '#1A1C2B',
+    backgroundColor: colors.background,
     padding: 1,
     paddingLeft: 8,
     paddingRight: 8,
@@ -75,7 +76,7 @@ export default StyleSheet.create({
     flexDirection: "row",
     flexWrap: 'wrap',
     alignSelf: 'stretch',
-    backgroundColor: '#1A1C2B',
+    backgroundColor: colors.white,
     borderRadius: 4,
     padding: 4,
   },
@@ -100,7 +101,7 @@ export default StyleSheet.create({
     padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: "#414866",
+    backgroundColor: colors.highlight,
     borderRadius: 8,
     marginLeft: 8,
     marginRight: 8,

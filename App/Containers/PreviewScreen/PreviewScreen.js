@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Text, View, ScrollView, AsyncStorage, Image } from "react-native";
 import Video from 'react-native-video';
 
-import styles from "./IdeaScreenStyles";
+import styles from "./PreviewScreenStyles";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 type Props = {
@@ -14,7 +14,7 @@ type State = {
   videoLoaded: boolean,
 }
 
-class IdeaScreen extends Component<Props, State> { 
+class PreviewScreen extends Component<Props, State> { 
   constructor(props) {
     super(props);
 
@@ -52,7 +52,7 @@ class IdeaScreen extends Component<Props, State> {
         <View style={styles.wrapper}>
           <View style={styles.header}>
             <View style={styles.headerLeftContainer}>
-              <Icon name="arrow-left" size={38} color="#fff" onPress={() => this.props.navigation.goBack()}/>
+              <Icon name="arrow-left" size={24} color="#000" onPress={() => this.props.navigation.goBack()}/>
             </View>
             <Text style={styles.headerText}>{this.state.idea?.title}</Text>
             <View style={styles.headerRightContainer}>
@@ -81,4 +81,4 @@ class IdeaScreen extends Component<Props, State> {
   }
 }
 
-export default IdeaScreen;
+export default PreviewScreen;

@@ -167,7 +167,12 @@ class UploadScreen extends Component<Props, State> {
             AsyncStorage.getItem('ideaData')
             .then((value) => {
               const loadedIdeaData = JSON.parse(value) 
-              const newIdeaData = [...loadedIdeaData, newIdea]
+              let newIdeaData
+              if (loadedIdeaData != null) {
+                newIdeaData = [...loadedIdeaData, newIdea]
+              } else {
+                newIdeaData = [newIdea]
+              }
               AsyncStorage.setItem('ideaData', JSON.stringify(newIdeaData)).then(() => {
                 this.props.navigation.navigate('ListScreen')
               })

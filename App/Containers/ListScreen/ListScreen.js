@@ -4,6 +4,7 @@ import ListElement from "../../Components/ListElement/ListElement"
 import styles from "./ListScreenStyles";
 import tagColours from "../../Themes/TagColours"
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import colors from "../../Themes/Colours";
 
 const placeholderIdeas = [
   {
@@ -186,7 +187,12 @@ class ListScreen extends Component<Props, State> {
     }
   }
 
-  componentDidMount = () => {
+  componentDidMount(){
+    this.loadList()
+    this.props.navigation.addListener('willFocus', this.loadList)
+  }
+
+  loadList = () => {
     this.setState({ "fetchingIdeaData": true }, () => {
       AsyncStorage.getItem('ideaData')
       .then((value) => {
@@ -195,7 +201,7 @@ class ListScreen extends Component<Props, State> {
           this.setState({ 'ideaData': loadedIdeaData, "fetchingIdeaData": false, "hasIdeaData": true },
             () => (this.updateListFilters()))
         } else {
-          this.usePlaceholderIdeaData()
+          //this.usePlaceholderIdeaData()
         }
       })
     })
@@ -240,7 +246,7 @@ class ListScreen extends Component<Props, State> {
   }
 
   onListElementPressed = (idea) => {
-    this.props.navigation.navigate('IdeaScreen', {'idea': idea})
+    this.props.navigation.navigate('PreviewScreen', {'idea': idea})
   }
 
   onSearchChangedText = (value) => {
@@ -317,7 +323,13 @@ class ListScreen extends Component<Props, State> {
             placeholderTextColor={"#91939E"}
             onChangeText={this.onSearchChangedText}
           />
-          <Icon name="tune" size={38} color={this.state.filtersOpen? "#FFF" : "#91939E"} onPress={this.toggleFilters} />
+          <Icon 
+            name="tune" 
+            size={30} 
+            color={this.state.filtersOpen? colors.black : "#91939E"} 
+            onPress={this.toggleFilters} 
+            style={styles.filterIcon}
+          />
         </View>
         
         <View style={styles.filtersWrapper} onLayout={this._setMaxHeight.bind(this)}>

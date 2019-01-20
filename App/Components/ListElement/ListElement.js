@@ -25,7 +25,6 @@ class ListElement extends Component<Props> {
             {t.initials}
           </Text>
         </View>
-       
       )
     })
     return (tagList)
@@ -40,8 +39,8 @@ class ListElement extends Component<Props> {
           />
           <View style={styles.infoWrapper}>
             <View style={styles.detailsWrapper}>
-              <Text style={styles.detailsText}>{this.props.idea.title}</Text>
-              <Text style={styles.detailsText}>{this.props.idea.date}</Text>
+              <Text style={styles.titleText}>{this.props.idea.title}</Text>
+              <Text style={styles.dateText}>{this.props.idea.date}</Text>
             </View>
             <View style={styles.tagsWrapper}>
               {this.renderTags()}

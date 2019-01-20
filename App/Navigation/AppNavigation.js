@@ -3,10 +3,11 @@ import { Text, View, Animated, Easing } from 'react-native';
 import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
 import ListScreen from '../Containers/ListScreen/ListScreen'
 import UploadScreen from '../Containers/UploadScreen/UploadScreen'
-import IdeaScreen from '../Containers/IdeaScreen/IdeaScreen'
+import PreviewScreen from '../Containers/PreviewScreen/PreviewScreen'
 import SettingsScreen from '../Containers/SettingsScreen/SettingsScreen'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import styles from './NavigationStyles'
+import colors from '../Themes/Colours';
 
 const ListNavigator = createStackNavigator({
   ListScreen: {
@@ -15,8 +16,8 @@ const ListNavigator = createStackNavigator({
     navigationOptions: {
     },
   },
-  IdeaScreen: {
-    screen: IdeaScreen,
+  PreviewScreen: {
+    screen: PreviewScreen,
 
     navigationOptions: {
     },
@@ -38,54 +39,68 @@ const ListNavigator = createStackNavigator({
 })
 
 const TabNavigator = createBottomTabNavigator({
-    CameraScreen: {
-        screen: SettingsScreen, //placeholder
+  UploadScreen: {
+    screen: UploadScreen, //placeholder
 
-        navigationOptions: {
-            tabBarLabel:"Record",
-            tabBarIcon: ({ tintColor }) => (
-                <Icon name="lightbulb-on" size={30} color={tintColor} />
-            ),
-        },
+    navigationOptions: {
+      tabBarLabel:"NEW",
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="plus" size={24} color={tintColor} />
+      ),
     },
-    UploadScreen: {
-        screen: UploadScreen, //placeholder
+  },
+  IdeaListStack: {
+    screen: ListNavigator,
 
-        navigationOptions: {
-            tabBarLabel:"New",
-            tabBarIcon: ({ tintColor }) => (
-                <Icon name="plus" size={30} color={tintColor} />
-            ),
-        },
+    navigationOptions: {
+      tabBarLabel:"IDEAS",
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="lightbulb-on" size={24} color={tintColor} />
+      ),
     },
-    ListStack: {
-        screen: ListNavigator,
+  },
+  CameraScreen: {
+    screen: SettingsScreen,
 
-        navigationOptions: {
-            tabBarLabel:"List",
-            tabBarIcon: ({ tintColor }) => (
-                <Icon name="view-list" size={30} color={tintColor} />
-            ),
-        },
+    navigationOptions: {
+      title: '',
+      tabBarIcon: ({ tintColor }) => (
+        <View style={styles.cameraButtonWrapper}>
+          <View style={styles.cameraButton}>
+            <Icon name="brain" size={24} color={colors.white} />
+          </View>
+        </View>
+      ),
     },
-    SettingsScreen: {
-        screen: SettingsScreen,
+  },
+  MoveListStack: {
+    screen: ListNavigator,
 
-        navigationOptions: {
-            tabBarLabel:"Settings",
-            tabBarIcon: ({ tintColor }) => (
-                <Icon name="settings" size={30} color={tintColor} />
-            ),
-        },
+    navigationOptions: {
+      tabBarLabel:"MOVES",
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="view-list" size={24} color={tintColor} />
+      ),
     },
+  },
+  SettingsScreen: {
+    screen: SettingsScreen,
+
+    navigationOptions: {
+      tabBarLabel:"SETTINGS",
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="settings" size={24} color={tintColor} />
+      ),
+    },
+  },
 },
 {
-    initialRouteName: 'ListStack',
-    tabBarOptions: {
-        style: styles.tabBar,
-        activeTintColor: "#fff",
-        inactiveTintColor: "#91939E"
-    },
+  initialRouteName: 'IdeaListStack',
+  tabBarOptions: {
+    style: styles.tabBar,
+    activeTintColor: "#000",
+    inactiveTintColor: "#91939E"
+  },
 });
 
 export default createAppContainer(TabNavigator);

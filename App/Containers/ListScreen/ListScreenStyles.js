@@ -1,12 +1,13 @@
 import { StyleSheet } from "react-native"
+import colors from "../../Themes/Colours"
 
 export default StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: '#1F2235',
+    backgroundColor: colors.background,
   },
   header: {
-    backgroundColor: '#1A1C2B',
+    backgroundColor: '#fff',
     overflow: 'hidden',
   },
   searchWrapper: {
@@ -15,23 +16,26 @@ export default StyleSheet.create({
     flexDirection: "row",
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#1A1C2B',
+    backgroundColor: '#fff',
   }, 
   searchInputBar: {
     flex: 1,
     height: 36,
-    fontSize: 20,
-    color: '#fff',
+    fontSize: 18,
+    color: colors.black,
     fontFamily: "InterUI-Regular",
-    borderRadius: 18,
-    backgroundColor: '#2A2F42',
+    borderRadius: 6,
+    backgroundColor: colors.background,
     padding: 1,
     paddingLeft: 14,
     paddingRight: 14,
     marginRight: 8,
   },
   filtersWrapper: {
-    backgroundColor: '#141521',
+    backgroundColor: '#fff',
+  },
+  filterIcon: {
+    margin: 4,
   },
   tagsWrapper: {
     flexDirection: "row",
@@ -50,20 +54,20 @@ export default StyleSheet.create({
   tagText: {
     textAlign: "center",
     textAlignVertical: "center",
-    fontSize: 18,
+    fontSize: 16,
     fontFamily: "InterUI-Regular",
   },
   tagSelected: {
-    color: '#FFF',
+    color: '#fff',
   },
   listContainer: {
-    backgroundColor: "#1F2235",
+    backgroundColor: colors.background,
     padding: 6,
     alignSelf: "stretch", 
     flexGrow: 1,
   },
   loadingContainer: {
-    backgroundColor: "#1F2235",
+    backgroundColor: colors.background,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

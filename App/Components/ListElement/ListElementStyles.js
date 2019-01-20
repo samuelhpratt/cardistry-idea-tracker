@@ -2,22 +2,21 @@ import { StyleSheet } from "react-native"
 
 export default StyleSheet.create({
   elementWrapper: {
-    backgroundColor: "#2A2F42",
+    backgroundColor: "#fff",
     alignSelf: "stretch",
     flexDirection: "row",
-    padding: 10,
     margin: 2, 
     borderRadius: 8,
+    overflow: 'hidden',
   },
   thumbnail: {
-    width: 80,
-    height: 80,
+    width: 100,
+    height: 100,
     alignSelf: "flex-start",
-    borderRadius: 6,
   },
   infoWrapper: {
     flex: 1,
-    marginLeft: 10,
+    margin: 10,
     flexDirection: "column",
     justifyContent: 'space-between',
   },
@@ -26,9 +25,14 @@ export default StyleSheet.create({
     flexDirection: "row",
     justifyContent: 'space-between',
   },
-  detailsText: {
-    color: "#fff",
+  titleText: {
+    color: "#000",
     fontSize: 20,
+    fontFamily: "InterUI-Regular",
+  },
+  dateText: {
+    color: "#bbb",
+    fontSize: 16,
     fontFamily: "InterUI-Regular",
   },
   tagsWrapper: {
@@ -43,6 +47,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   tagText: {
+    color: 'rgba(0, 0, 0, 0.1)',
     textAlign: "center",
     textAlignVertical: "center",
     fontSize: 18,

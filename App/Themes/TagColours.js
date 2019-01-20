@@ -2,43 +2,43 @@ import { StyleSheet } from "react-native"
 
 export default StyleSheet.create({
   c1: {
-    backgroundColor: '#9C82B2',
+    backgroundColor: '#e0ecff',
     color: '#5B00A5',
   },
   c2: {
-    backgroundColor: '#DB92BE',
+    backgroundColor: '#d3f1ff',
     color: '#CC007A',
   },
   c3: {
-    backgroundColor: '#F2A2B3',
+    backgroundColor: '#d3fffc',
     color: '#DB002F',
   },
   c4: {
-    backgroundColor: '#F7BA96',
+    backgroundColor: '#d8ffec',
     color: '#E25300',
   },
   c5: {
-    backgroundColor: '#FCD085',
+    backgroundColor: '#e9ffdd',
     color: '#D38600',
   },
   c6: {
-    backgroundColor: '#FCF5AB',
+    backgroundColor: '#f7fce0',
     color: '#D8C600',
   },
   c7: {
-    backgroundColor: '#C4DDA1',
+    backgroundColor: '#fcf6e0',
     color: '#72BF00',
   },
   c8: {
-    backgroundColor: '#A0D3C3',
+    backgroundColor: '#e8e1dc',
     color: '#00B279',
   },
   c9: {
-    backgroundColor: '#8CD4E2',
+    backgroundColor: '#ffe8e8',
     color: '#009FBF',
   },
   c10: {
-    backgroundColor: '#91BDE0',
+    backgroundColor: '#fce3f1',
     color: '#006EC9',
   },
 })

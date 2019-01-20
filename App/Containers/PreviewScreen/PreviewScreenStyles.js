@@ -1,13 +1,14 @@
 import { StyleSheet } from "react-native"
+import colors from "../../Themes/Colours";
 
 export default StyleSheet.create({
   background: {
     flex: 1,
-    backgroundColor: "#1F2235",
+    backgroundColor: colors.background,
   },
   wrapper: {
     flex: 1,
-    backgroundColor: "#2A2F42",
+    backgroundColor: colors.white,
     margin: 8, 
     borderRadius: 8,
   },
@@ -31,7 +32,7 @@ export default StyleSheet.create({
     marginRight: 6,
   },
   headerText: {
-    color: "#fff",
+    color: "#000",
     fontSize: 18,   
   },
   videoWrapper: {
