@@ -1,11 +1,11 @@
 import { StyleSheet } from "react-native"
-import colors from "../Themes/Colours";
+import { Colors } from "../Themes"
 
 export default StyleSheet.create({
   tabBar: {
     height: 60,
     paddingBottom: 5,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.white,
     borderTopColor: "transparent",
   },
   cameraButtonWrapper: {
@@ -14,7 +14,7 @@ export default StyleSheet.create({
     width: 84,
     borderRadius: 42,
     borderWidth: 8,
-    borderColor: colors.white,
+    borderColor: Colors.white,
     justifyContent: 'center',
     alignItems: 'center',
     overflow: 'hidden',
@@ -26,7 +26,7 @@ export default StyleSheet.create({
     width: 60,
     borderRadius: 30,
     borderWidth: 2,
-    borderColor: colors.white,
+    borderColor: Colors.white,
     justifyContent: 'center',
     alignItems: 'center',
     overflow: 'hidden',

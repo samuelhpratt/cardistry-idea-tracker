@@ -1,10 +1,10 @@
 import { StyleSheet } from "react-native"
-import colors from "../../Themes/Colours"
+import { Colors } from "../../Themes"
 
 export default StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: Colors.background,
   },
   header: {
     backgroundColor: '#fff',
@@ -22,10 +22,10 @@ export default StyleSheet.create({
     flex: 1,
     height: 36,
     fontSize: 18,
-    color: colors.black,
+    color: Colors.black,
     fontFamily: "InterUI-Regular",
     borderRadius: 6,
-    backgroundColor: colors.background,
+    backgroundColor: Colors.background,
     padding: 1,
     paddingLeft: 14,
     paddingRight: 14,
@@ -61,13 +61,13 @@ export default StyleSheet.create({
     color: '#fff',
   },
   listContainer: {
-    backgroundColor: colors.background,
+    backgroundColor: Colors.background,
     padding: 6,
     alignSelf: "stretch", 
     flexGrow: 1,
   },
   loadingContainer: {
-    backgroundColor: colors.background,
+    backgroundColor: Colors.background,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

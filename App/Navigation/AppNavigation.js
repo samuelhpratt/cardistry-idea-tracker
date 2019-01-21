@@ -7,7 +7,7 @@ import PreviewScreen from '../Containers/PreviewScreen/PreviewScreen'
 import SettingsScreen from '../Containers/SettingsScreen/SettingsScreen'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import styles from './NavigationStyles'
-import colors from '../Themes/Colours';
+import { Colors } from "../Themes"
 
 const ListNavigator = createStackNavigator({
   ListScreen: {
@@ -67,7 +67,7 @@ const TabNavigator = createBottomTabNavigator({
       tabBarIcon: ({ tintColor }) => (
         <View style={styles.cameraButtonWrapper}>
           <View style={styles.cameraButton}>
-            <Icon name="brain" size={24} color={colors.white} />
+            <Icon name="brain" size={24} color={Colors.white} />
           </View>
         </View>
       ),
@@ -98,7 +98,7 @@ const TabNavigator = createBottomTabNavigator({
   initialRouteName: 'IdeaListStack',
   tabBarOptions: {
     style: styles.tabBar,
-    activeTintColor: "#000",
+    activeTintColor: Colors.black,
     inactiveTintColor: "#91939E"
   },
 });

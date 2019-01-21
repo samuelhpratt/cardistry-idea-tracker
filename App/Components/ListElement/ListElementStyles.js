@@ -50,7 +50,7 @@ export default StyleSheet.create({
     color: 'rgba(0, 0, 0, 0.1)',
     textAlign: "center",
     textAlignVertical: "center",
-    fontSize: 18,
+    fontSize: 16,
     fontFamily: "InterUI-Regular",
   },
   rightButton: {

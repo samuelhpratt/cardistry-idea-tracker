@@ -36,8 +36,8 @@ class PreviewScreen extends Component<Props, State> {
   renderTags = () => {
     tagList = this.state.idea?.tags.map(t => {
       return (
-        <View key={t.id} style={[styles.tagBackground, {backgroundColor: t.style.backgroundColor}]}>
-          <Text style={[styles.tagText, {color: t.style.color}]}>
+        <View key={t.id} style={[styles.tagBackground, {backgroundColor: t.style.light}]}>
+          <Text style={[styles.tagText, {color: t.style.dark}]}>
             {t.title}
           </Text>
         </View>

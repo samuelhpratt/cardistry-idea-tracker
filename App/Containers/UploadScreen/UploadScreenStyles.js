@@ -1,14 +1,14 @@
 import { StyleSheet } from "react-native"
-import colors from "../../Themes/Colours"
+import { Colors } from "../../Themes"
 
 export default StyleSheet.create({
   background: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: Colors.background,
   },
   wrapper: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: Colors.white,
     margin: 8, 
     borderRadius: 8,
   },
@@ -26,7 +26,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     justifyContent: 'center',
-    backgroundColor: colors.white,
+    backgroundColor: Colors.white,
     borderRadius: 8,
   },
   thumbnailWrapper: {
@@ -42,7 +42,7 @@ export default StyleSheet.create({
     padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: colors.white,
+    backgroundColor: Colors.white,
     borderRadius: 8,
   },
   buttonText: {
@@ -50,7 +50,7 @@ export default StyleSheet.create({
     textAlign: "center",
     textAlignVertical: "center",
     fontFamily: "InterUI-Regular",
-    color: colors.black,
+    color: Colors.black,
   },
   thumbnail: {
     width: 140,
@@ -62,10 +62,10 @@ export default StyleSheet.create({
   titleInput: {
     height: 36,
     fontSize: 20,
-    color: colors.black,
+    color: Colors.black,
     fontFamily: "InterUI-Regular",
     borderRadius: 4,
-    backgroundColor: colors.background,
+    backgroundColor: Colors.background,
     padding: 1,
     paddingLeft: 8,
     paddingRight: 8,
@@ -76,7 +76,7 @@ export default StyleSheet.create({
     flexDirection: "row",
     flexWrap: 'wrap',
     alignSelf: 'stretch',
-    backgroundColor: colors.white,
+    backgroundColor: Colors.white,
     borderRadius: 4,
     padding: 4,
   },
@@ -91,7 +91,7 @@ export default StyleSheet.create({
   tagText: {
     textAlign: "center",
     textAlignVertical: "center",
-    fontSize: 18,
+    fontSize: 16,
     fontFamily: "InterUI-Regular",
   },
   tagSelected: {
@@ -101,7 +101,7 @@ export default StyleSheet.create({
     padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: colors.highlight,
+    backgroundColor: Colors.highlight,
     borderRadius: 8,
     marginLeft: 8,
     marginRight: 8,

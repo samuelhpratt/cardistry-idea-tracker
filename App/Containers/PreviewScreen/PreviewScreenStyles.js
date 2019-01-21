@@ -1,14 +1,14 @@
 import { StyleSheet } from "react-native"
-import colors from "../../Themes/Colours";
+import { Colors } from "../../Themes"
 
 export default StyleSheet.create({
   background: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: Colors.background,
   },
   wrapper: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: Colors.white,
     margin: 8, 
     borderRadius: 8,
   },
@@ -32,12 +32,12 @@ export default StyleSheet.create({
     marginRight: 6,
   },
   headerText: {
-    color: "#000",
+    color: Colors.black,
     fontSize: 18,   
   },
   videoWrapper: {
     height: 400,
-    backgroundColor: "#000",
+    backgroundColor: Colors.black,
   },
   video: {
     flex: 1,
@@ -59,7 +59,7 @@ export default StyleSheet.create({
   tagText: {
     textAlign: "center",
     textAlignVertical: "center",
-    fontSize: 18,
+    fontSize: 16,
     fontFamily: "InterUI-Regular",
   },
 })

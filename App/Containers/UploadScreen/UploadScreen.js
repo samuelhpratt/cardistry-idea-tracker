@@ -2,71 +2,71 @@ import React, { Component } from "react";
 import { Text, View, AsyncStorage, Image, Button, TextInput, TouchableOpacity } from "react-native";
 import ImagePicker from 'react-native-image-picker';
 import Video from 'react-native-video';
-import tagColours from "../../Themes/TagColours"
-
 import styles from "./UploadScreenStyles";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { TagColors } from "../../Themes"
+
 
 const placeholderTags = [
   {
     id: 1,
     title: "One Handed",
     initials: "OH", 
-    style: tagColours.c4,
+    style: TagColors.c4,
   },
   {
     id: 2,
     title: "Two Handed",
     initials: "TH",
-    style: tagColours.c7,
+    style: TagColors.c7,
   },
   {
    id: 3,
     title: "Packet Cut",
     initials: "PC",
-    style: tagColours.c1,
+    style: TagColors.c1,
   },
   {
     id: 4,
      title: "Isolation",
      initials: "I",
-     style: tagColours.c2,
+     style: TagColors.c2,
    },
    {
     id: 5,
     title: "Aerial",
     initials: "A", 
-    style: tagColours.c5,
+    style: TagColors.c5,
   },
   {
     id: 6,
     title: "Fan/Spread",
     initials: "FS",
-    style: tagColours.c8,
+    style: TagColors.c8,
   },
   {
    id: 7,
     title: "Single Card",
     initials: "SC",
-    style: tagColours.c6,
+    style: TagColors.c6,
   },
   {
     id: 8,
      title: "Magical",
      initials: "M",
-     style: tagColours.c3,
+     style: TagColors.c3,
    },
    {
     id: 9,
      title: "Display",
      initials: "D",
-     style: tagColours.c9,
+     style: TagColors.c9,
    },
    {
     id: 10,
      title: "Production",
      initials: "P",
-     style: tagColours.c10,
+     style: TagColors.c10,
    },
 ]
 
@@ -201,11 +201,11 @@ class UploadScreen extends Component<Props, State> {
       return (
         <TouchableOpacity
           key={t.id} 
-          style={[styles.tagBackground, {backgroundColor: t.style.backgroundColor}]} 
+          style={[styles.tagBackground, {backgroundColor: t.style.light}]} 
           onPress={() => this.tagPressed(t.id)}
         >
           <Text
-            style={[styles.tagText, {color: t.style.color}, this.state.newTags.includes(t.id)? styles.tagSelected : null]} 
+            style={[styles.tagText, {color: t.style.dark}, this.state.newTags.includes(t.id)? styles.tagSelected : null]} 
           >
             {t.initials}
           </Text>
