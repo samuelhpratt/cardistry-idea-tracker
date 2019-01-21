@@ -21,7 +21,7 @@ export default StyleSheet.create({
     marginBottom: 5,
   },
   cameraButton: {
-    backgroundColor: '#ff0a57',
+    backgroundColor: Colors.cameraButton,
     height: 60,
     width: 60,
     borderRadius: 30,

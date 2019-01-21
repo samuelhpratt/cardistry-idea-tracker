@@ -186,6 +186,8 @@ class ListScreen extends Component<Props, State> {
     }
   }
 
+
+
   componentDidMount(){
     this.loadList()
     this.props.navigation.addListener('willFocus', this.loadList)
