@@ -11,6 +11,7 @@ type Props = {
 type State = {
   splashScale: Animated.Value,
   splashOpacity: Animated.Value,
+  splashVisible: boolean,
 }
 
 class App extends Component<Props, State> {
@@ -20,6 +21,7 @@ class App extends Component<Props, State> {
     this.state = {
       splashScale: new Animated.Value(25),
       splashOpacity: new Animated.Value(1),
+      splashVisible: true,
     }
   }
 
@@ -29,10 +31,12 @@ class App extends Component<Props, State> {
 
   splashScreenAnimation = () => {
     setTimeout(() => {
+      SplashScreen.hide()
       Animated.sequence([
         Animated.timing(
           this.state.splashScale,
           {
+            delay: 400, // wait for splash to fade out
             toValue: 1,
             duration: 400,
           }
@@ -44,16 +48,17 @@ class App extends Component<Props, State> {
             duration: 400,
           }
         )
-      ]).start();
-      SplashScreen.hide()
-    }, 500)
+      ]).start(() =>
+        this.setState({ splashVisible: false })
+      );
+    }, 1)
   }
 
   render() {
     return (
       <View style={{ flex: 1 }}>
         <AppNavigation />
-        <View style={{ 
+        { this.state.splashVisible && <View style={{ 
           position: 'absolute',
           bottom: 15,
           left: 0,
@@ -75,7 +80,7 @@ class App extends Component<Props, State> {
               ]
             }}
           />
-        </View>
+        </View>}
       </View>
     )
   }

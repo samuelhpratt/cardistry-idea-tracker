@@ -22,9 +22,9 @@ export default StyleSheet.create({
   },
   cameraButton: {
     backgroundColor: Colors.cameraButton,
-    height: 60,
-    width: 60,
-    borderRadius: 30,
+    height: 62,
+    width: 62,
+    borderRadius: 31,
     borderWidth: 2,
     borderColor: Colors.white,
     justifyContent: 'center',
