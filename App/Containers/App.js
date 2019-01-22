@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Animated, Easing } from 'react-native';
+import { Text, View, Animated, Easing, StatusBar, Dimensions } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import AppNavigation from '../Navigation/AppNavigation';
 import { Colors } from "../Themes";
@@ -19,7 +19,7 @@ class App extends Component<Props, State> {
     super(props);
 
     this.state = {
-      splashScale: new Animated.Value(25),
+      splashScale: new Animated.Value(Math.ceil(Dimensions.get('window').height/28)),
       splashOpacity: new Animated.Value(1),
       splashVisible: true,
     }
@@ -57,6 +57,10 @@ class App extends Component<Props, State> {
   render() {
     return (
       <View style={{ flex: 1 }}>
+        <StatusBar 
+          backgroundColor="black"
+          barStyle="light-content"
+        />
         <AppNavigation />
         { this.state.splashVisible && <View style={{ 
           position: 'absolute',
