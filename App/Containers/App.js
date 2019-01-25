@@ -51,7 +51,7 @@ class App extends Component<Props, State> {
       ]).start(() =>
         this.setState({ splashVisible: false })
       );
-    }, 1)
+    }, 10)
   }
 
   render() {

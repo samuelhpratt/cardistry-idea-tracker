@@ -63,8 +63,27 @@ export default StyleSheet.create({
   listContainer: {
     backgroundColor: Colors.background,
     padding: 6,
+    paddingBottom: 8,
     alignSelf: "stretch", 
     flexGrow: 1,
+  },
+  filterShadow: {
+    position: 'absolute',
+    top: 0,
+    height: 30,
+    width: '100%',
+  },
+  topShadow: {
+    position: 'absolute',
+    top: 0,
+    height: 30,
+    width: '100%',
+  },
+  bottomShadow: {
+    position: 'absolute',
+    bottom: 0,
+    height: 30,
+    width: '100%',
   },
   loadingContainer: {
     backgroundColor: Colors.background,

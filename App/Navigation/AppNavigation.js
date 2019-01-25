@@ -100,6 +100,7 @@ const TabNavigator = createBottomTabNavigator({
   initialRouteName: 'MoveListStack',
   tabBarOptions: {
     style: styles.tabBar,
+    labelStyle: styles.tabLabel,
     activeTintColor: Colors.black,
     inactiveTintColor: "#91939E"
   },

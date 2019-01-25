@@ -1,8 +1,9 @@
 import { StyleSheet } from "react-native"
+import { Colors } from "../../Themes"
 
 export default StyleSheet.create({
   elementWrapper: {
-    backgroundColor: "#fff",
+    backgroundColor: Colors.white,
     alignSelf: "stretch",
     flexDirection: "row",
     margin: 2, 
@@ -26,12 +27,12 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
   },
   titleText: {
-    color: "#000",
+    color: Colors.black,
     fontSize: 20,
     fontFamily: "InterUI-Regular",
   },
   dateText: {
-    color: "#bbb",
+    color: Colors.lightGrey,
     fontSize: 16,
     fontFamily: "InterUI-Regular",
   },

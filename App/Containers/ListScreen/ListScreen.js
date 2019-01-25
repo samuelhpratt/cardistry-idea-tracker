@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Text, View, ScrollView, AsyncStorage, TextInput, Animated, TouchableOpacity } from "react-native";
-import ListElement from "../../Components/ListElement/ListElement"
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import LinearGradient from "react-native-linear-gradient";
+import ListElement from "../../Components/ListElement/ListElement";
+
 import styles from "./ListScreenStyles";
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import { Colors, TagColors } from "../../Themes"
+import { Colors, TagColors } from "../../Themes";
 
 const placeholderIdeas = [
   {
@@ -327,13 +329,19 @@ class ListScreen extends Component<Props, State> {
           <Icon 
             name="tune" 
             size={30} 
-            color={this.state.filtersOpen? Colors.black : "#91939E"} 
+            color={this.state.filtersOpen? Colors.black : Colors.lightGrey} 
             onPress={this.toggleFilters} 
             style={styles.filterIcon}
           />
         </View>
         
         <View style={styles.filtersWrapper} onLayout={this._setMaxHeight.bind(this)}>
+          <LinearGradient 
+            locations={[0.2, 0.8]}
+            colors={["rgba(81, 84, 99, 0.05)", "rgba(81, 84, 99, 0)"]}
+            style={styles.filterShadow}
+            pointerEvents="none"
+          />
           <View style={styles.tagsWrapper}>
             {this.renderTagsList()}
           </View>
@@ -367,9 +375,23 @@ class ListScreen extends Component<Props, State> {
         )
       }
       return (
-        <ScrollView contentContainerStyle={styles.listContainer}>
-          {ideaList}
-        </ScrollView> 
+        <View style={{ flex: 1 }}>
+          <ScrollView contentContainerStyle={styles.listContainer}>
+            {ideaList}
+          </ScrollView> 
+          <LinearGradient 
+            locations={[0.2, 0.8]}
+            colors={["rgba(81, 84, 99, 0.05)", "rgba(81, 84, 99, 0)"]}
+            style={styles.topShadow}
+            pointerEvents="none"
+          />
+          <LinearGradient 
+            locations={[0.2, 0.8]}
+            colors={["rgba(81, 84, 99, 0)", "rgba(81, 84, 99, 0.05)"]}
+            style={styles.bottomShadow}
+            pointerEvents="none"
+          />
+        </View>
       )
     }
     return (
@@ -385,7 +407,6 @@ class ListScreen extends Component<Props, State> {
         {this.renderFilters()} 
         {this.renderIdeasList()}
       </View>
-      
     );
   }
 }

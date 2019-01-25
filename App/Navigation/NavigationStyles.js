@@ -8,8 +8,12 @@ export default StyleSheet.create({
     backgroundColor: Colors.white,
     borderTopColor: "transparent",
   },
+  tabLabel: {
+    letterSpacing: 0.5,
+    fontWeight: 'bold',
+  },
   cameraButtonWrapper: {
-    backgroundColor: "#ccc",
+    backgroundColor: Colors.lightGrey,
     height: 84,
     width: 84,
     borderRadius: 42,
