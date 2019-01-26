@@ -64,29 +64,32 @@ class App extends Component<Props, State> {
           barStyle="light-content"
         />
         <AppNavigation />
-        { this.state.splashVisible && <View style={{ 
-          position: 'absolute',
-          bottom: 15,
-          left: 0,
-          right: 0,
-          alignItems: 'center',
-        }}
-        >
-          <Animated.View 
-            opacity={this.state.splashOpacity}
+        { this.state.splashVisible && 
+          <View 
             style={{ 
-              backgroundColor: Colors.cameraButton,
-              width: 56,
-              height: 56,
-              borderRadius: 28,
-              transform: [
-                {
-                  scale: this.state.splashScale
-                },
-              ]
+              position: 'absolute',
+              bottom: 15,
+              left: 0,
+              right: 0,
+              alignItems: 'center',
             }}
-          />
-        </View>}
+          >
+            <Animated.View 
+              opacity={this.state.splashOpacity}
+              style={{ 
+                backgroundColor: Colors.cameraButton,
+                width: 56,
+                height: 56,
+                borderRadius: 28,
+                transform: [
+                  {
+                    scale: this.state.splashScale
+                  },
+                ]
+              }}
+            />
+          </View>
+        }
       </View>
     )
   }
