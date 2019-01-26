@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import { Text, View, Animated, Easing, StatusBar, Dimensions } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
@@ -15,7 +17,7 @@ type State = {
 }
 
 class App extends Component<Props, State> {
-  constructor(props) {
+  constructor(props: any) {
     super(props);
 
     this.state = {

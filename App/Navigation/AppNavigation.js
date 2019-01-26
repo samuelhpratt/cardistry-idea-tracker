@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import { Text, View, Animated, Easing } from 'react-native';
 import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation';

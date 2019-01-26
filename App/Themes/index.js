@@ -1,3 +1,5 @@
+// @flow
+
 import Colors from './Colors'
 import TagColors from './TagColors'
 

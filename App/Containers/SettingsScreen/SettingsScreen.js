@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import { Text, View, TextInput, AsyncStorage } from 'react-native';
 import styles from './SettingsScreenStyles';
@@ -8,15 +10,15 @@ type State = {
 
 class SettingsScreen extends Component<State> { 
   static defaultProps = {
-      testValue: "",
+    testValue: "",
   }; 
 
   componentDidMount = () => AsyncStorage.getItem('testValue')
-  .then((value) => this.setState({ 'testValue': value }))
+  .then((value) => this.setState({ testValue: value }))
 
-  setValue = (value) => {
+  setValue = (value: any) => {
     AsyncStorage.setItem('testValue', value);
-    this.setState({ 'testValue': value });
+    this.setState({ testValue: value });
   }
 
   render() {

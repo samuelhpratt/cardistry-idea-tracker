@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from "react";
 import { Text, View, ScrollView, AsyncStorage, TextInput, Animated, TouchableOpacity } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -6,89 +8,6 @@ import ListElement from "../../Components/ListElement/ListElement";
 
 import styles from "./ListScreenStyles";
 import { Colors, TagColors } from "../../Themes";
-
-const placeholderIdeas = [
-  {
-    id: 0,
-    title: "No Strings Attached",
-    thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
-    date: "14/8/18",
-    tags: [2, 4, 7, 8],
-    videoUri: "content://media/external/file/87204",
-  },
-  {
-    id: 1,
-    title: "Nuke",
-    thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
-    date: "6/4/16",
-    tags: [2, 3, 9],
-    videoUri: "content://media/external/file/87204",
-  },
-  {
-    id: 2,
-    title: "Passport",
-    thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
-    date: "2/5/18",
-    tags: [2, 3],
-    videoUri: "content://media/external/file/87204",
-  },
-  {
-   id: 3,
-    title: "USB A",
-    thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
-    date: "10/4/17",
-    tags: [2, 3],
-    videoUri: "content://media/external/file/87204",
-  }, 
-  {
-    id: 4,
-    title: "Limbo",
-    thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
-    date: "28/11/06",
-    tags: [1, 3],
-    videoUri: "content://media/external/file/87204",
-  },
-  {
-    id: 5,
-    title: "Gurnard Fan",
-    thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
-    date: "2/1/18",
-    tags: [1, 6],
-    videoUri: "content://media/external/file/87204",
-  },
-  {
-   id: 6,
-    title: "Cragsman",
-    thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
-    date: "10/4/18",
-    tags: [2, 3],
-    videoUri: "content://media/external/file/87204",
-  }, 
-  {
-    id: 7,
-    title: "Updog",
-    thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
-    date: "2/7/17",
-    tags: [1, 3],
-    videoUri: "content://media/external/file/87204",
-  },
-  {
-   id: 8,
-    title: "Crevice",
-    thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
-    date: "10/7/18",
-    tags: [1, 3],
-    videoUri: "content://media/external/file/87204",
-  }, 
-  {
-    id: 9,
-    title: "Flare",
-    thumbnail: "https://i.pinimg.com/236x/75/41/ab/7541ab930ad81a018cca45a27cbe9cf3--orion-nebula-the-deck.jpg",
-    date: "2/7/18",
-    tags: [2, 3, 7, 9],
-    videoUri: "content://media/external/file/87204",
-  },
-]
 
 const placeholderTags = [
   {
@@ -165,13 +84,13 @@ type State = {
   ideasToDisplay: any,
   fetchingIdeaData: boolean,
   hasIdeaData: boolean,
-  usePlaceholder: boolean,
   filtersOpen: boolean,
   filtersAnimation: any,
+  maxHeight: number,
 }
 
 class ListScreen extends Component<Props, State> { 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
 
     this.state = {
@@ -182,9 +101,9 @@ class ListScreen extends Component<Props, State> {
       searchString: '',
       fetchingIdeaData: false,
       hasIdeaData: false,
-      usePlaceholder: false, // should it use the placeholder data above?
       filtersOpen: false,
       filtersAnimation: new Animated.Value(60),
+      maxHeight: 0,
     }
   }
 
@@ -200,22 +119,14 @@ class ListScreen extends Component<Props, State> {
       AsyncStorage.getItem('ideaData')
       .then((value) => {
         const loadedIdeaData = JSON.parse(value) 
-        if (value != null && !this.state.usePlaceholder) {
+        if (value != null) {
           this.setState({ 'ideaData': loadedIdeaData, "fetchingIdeaData": false, "hasIdeaData": true },
             () => (this.updateListFilters()))
         } else {
-          //this.usePlaceholderIdeaData()
+          AsyncStorage.setItem('lastId', JSON.stringify(-1))
         }
       })
     })
-  }
-
-  usePlaceholderIdeaData = () => {
-    this.setState({ 'ideaData': placeholderIdeas, "fetchingIdeaData": false, "hasIdeaData": true }, () => {
-      this.updateStoredIdeaData()
-      this.updateListFilters()
-    })
-    AsyncStorage.setItem('lastId', JSON.stringify(this.state.ideaData.length - 1))
   }
 
   updateStoredIdeaData = () => {
@@ -248,11 +159,11 @@ class ListScreen extends Component<Props, State> {
     })
   }
 
-  onListElementPressed = (idea) => {
+  onListElementPressed = (idea: Object) => {
     this.props.navigation.navigate('PreviewScreen', {'idea': idea})
   }
 
-  onSearchChangedText = (value) => {
+  onSearchChangedText = (value: string) => {
     this.setState({
       searchString: value,
     }, () => (this.updateListFilters()))
@@ -281,7 +192,7 @@ class ListScreen extends Component<Props, State> {
     })
   }
 
-  tagFilterPressed = (tagId) => {
+  tagFilterPressed = (tagId: number) => {
     if (this.state.tagFilter.includes(tagId)) {
       this.setState(prevState => ({
         tagFilter: prevState.tagFilter.filter((id) => {
@@ -298,7 +209,7 @@ class ListScreen extends Component<Props, State> {
   }
 
   renderTagsList = () => {
-    tagList = this.state.tagData?.map(t => {
+    const tagList = this.state.tagData?.map(t => {
       return (
         <TouchableOpacity
           key={t.id} 
@@ -352,7 +263,7 @@ class ListScreen extends Component<Props, State> {
 
   renderIdeasList = () => {
     if (this.state.hasIdeaData && !this.state.fetchingIdeaData) {
-      ideaList = this.state.ideasToDisplay.map(e => {
+      const ideaList = this.state.ideasToDisplay.map(e => {
         return (
           <ListElement key={e.id}
             idea={{

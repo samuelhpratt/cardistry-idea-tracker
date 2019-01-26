@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from "react";
 import { Text, View, AsyncStorage, Image, Button, TextInput, TouchableOpacity } from "react-native";
 import ImagePicker from 'react-native-image-picker';
@@ -75,14 +77,16 @@ type Props = {
 }
 
 type State = {
+  tagData: [],
   newTitle: string,
   newThumbnail: string,
   newTags: [],
   newVideoUri: string,
+  hasVideo: boolean,
 }
 
 class UploadScreen extends Component<Props, State> { 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
 
     this.state = {
@@ -91,6 +95,7 @@ class UploadScreen extends Component<Props, State> {
       newThumbnail: "",
       newTags: [],
       newVideoUri: "",
+      hasVideo: false,
     }
   }
 
@@ -156,7 +161,7 @@ class UploadScreen extends Component<Props, State> {
           const newId = oldId!= null ? oldId + 1 : 0
           AsyncStorage.setItem('lastId', JSON.stringify(newId)).then(() => {
             const today = new Date()
-            newIdea = {
+            const newIdea = {
               id: newId,
               title: this.state.newTitle != "" ? this.state.newTitle : "untitled",
               thumbnail: this.state.newThumbnail,
@@ -182,7 +187,7 @@ class UploadScreen extends Component<Props, State> {
     }
   }
 
-  tagPressed = (tagId) => {
+  tagPressed = (tagId: number) => {
     if (this.state.newTags.includes(tagId)) {
       this.setState(prevState => ({
         newTags: prevState.newTags.filter((id) => {
@@ -197,7 +202,7 @@ class UploadScreen extends Component<Props, State> {
   }
 
   renderTagsList = () => {
-    tagList = this.state.tagData.map(t => {
+    const tagList = this.state.tagData.map(t => {
       return (
         <TouchableOpacity
           key={t.id} 

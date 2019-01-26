@@ -1,5 +1,5 @@
 {
-  "name": "CardistryIdeas",
+  "name": "cardistryideas",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
+    "flow-bin": "^0.91.0",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.50.0",
     "react-test-renderer": "16.6.1"

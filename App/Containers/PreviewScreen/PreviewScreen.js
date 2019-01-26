@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from "react";
 import { Text, View, ScrollView, AsyncStorage, Image } from "react-native";
 import Video from 'react-native-video';
@@ -11,14 +13,15 @@ type Props = {
 
 type State = {
   idea: Object,
-  videoLoaded: boolean,
+  videoLoading: boolean,
 }
 
 class PreviewScreen extends Component<Props, State> { 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
 
     this.state = {
+      idea: null,
       videoLoading: false,
     }
   }
@@ -34,7 +37,7 @@ class PreviewScreen extends Component<Props, State> {
   }
 
   renderTags = () => {
-    tagList = this.state.idea?.tags.map(t => {
+    const tagList = this.state.idea?.tags.map(t => {
       return (
         <View key={t.id} style={[styles.tagBackground, {backgroundColor: t.style.light}]}>
           <Text style={[styles.tagText, {color: t.style.dark}]}>

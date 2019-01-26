@@ -1,10 +1,12 @@
+// @flow
+
 import React, { Component } from "react";
 import { Text, View, Image, TouchableWithoutFeedback } from "react-native";
 import styles from "./ListElementStyles";
 
 type Props = {
   idea: Object,
-  onPress: () => {},
+  onPress: Object => {},
 }
 
 class ListElement extends Component<Props> {
@@ -18,7 +20,7 @@ class ListElement extends Component<Props> {
   }
 
   renderTags = () => {
-    tagList = this.props.idea.tags.map(t => {
+    const tagList = this.props.idea.tags.map(t => {
       return (
         <View key={t.id} style={[styles.tagBackground, {backgroundColor: t.style.light}]}>
           <Text style={[styles.tagText, {color: t.style.dark}]}>

@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import { Text, View, TextInput, AsyncStorage } from 'react-native';
 import styles from './CameraScreenStyles';

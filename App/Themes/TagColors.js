@@ -1,3 +1,5 @@
+// @flow
+
 const tagColors = {
   c1: {
     light: '#e0ecff',
