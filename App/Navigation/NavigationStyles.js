@@ -9,6 +9,8 @@ export default StyleSheet.create({
     paddingBottom: 5,
     backgroundColor: Colors.white,
     borderTopColor: "transparent",
+    borderBottomWidth: 1,
+    borderBottomColor: 'green',
   },
   tabLabel: {
     letterSpacing: 0.5,

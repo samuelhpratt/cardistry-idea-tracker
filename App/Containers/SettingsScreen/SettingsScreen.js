@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
-import { Text, View, TextInput, AsyncStorage } from 'react-native';
+import { Text, View, TextInput, AsyncStorage, SafeAreaView } from 'react-native';
 import styles from './SettingsScreenStyles';
 
 type State = {
@@ -23,7 +23,7 @@ class SettingsScreen extends Component<State> {
 
   render() {
     return (
-      <View style={styles.background}>
+      <SafeAreaView style={styles.background}>
         <View style={styles.wrapper}>
           <TextInput style={styles.input} autoCapitalize = 'none'
             onChangeText = {this.setValue}/>
@@ -31,7 +31,7 @@ class SettingsScreen extends Component<State> {
             {this.state?.testValue}
           </Text>
         </View>
-      </View>
+      </SafeAreaView>
     );
   }
 }

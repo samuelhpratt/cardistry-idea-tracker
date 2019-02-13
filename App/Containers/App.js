@@ -31,6 +31,11 @@ class App extends Component<Props, State> {
     this.splashScreenAnimation()
   }
 
+  isIPhoneX = () => {
+    const size = Dimensions.get('screen')
+    return size.height == 812 || size.width == 812 || size.height == 896 || size.width == 896
+  }
+
   splashScreenAnimation = () => {
     setTimeout(() => {
       SplashScreen.hide()
@@ -60,15 +65,15 @@ class App extends Component<Props, State> {
     return (
       <View style={{ flex: 1 }}>
         <StatusBar 
-          backgroundColor="black"
-          barStyle="light-content"
+          backgroundColor={Colors.white}
+          barStyle="dark-content"
         />
         <AppNavigation />
         { this.state.splashVisible && 
           <View 
             style={{ 
               position: 'absolute',
-              bottom: 15,
+              bottom: this.isIPhoneX() ? 46 : 15,
               left: 0,
               right: 0,
               alignItems: 'center',

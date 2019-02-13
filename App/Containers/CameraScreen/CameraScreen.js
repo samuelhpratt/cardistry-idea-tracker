@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
-import { Text, View, TextInput, AsyncStorage } from 'react-native';
+import { Text, View, TextInput, AsyncStorage, SafeAreaView } from 'react-native';
 import { RNCamera } from 'react-native-camera'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 

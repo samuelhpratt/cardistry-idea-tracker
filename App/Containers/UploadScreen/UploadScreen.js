@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from "react";
-import { Text, View, AsyncStorage, Image, Button, TextInput, TouchableOpacity } from "react-native";
+import { Text, View, AsyncStorage, Image, Button, TextInput, TouchableOpacity, SafeAreaView } from "react-native";
 import ImagePicker from 'react-native-image-picker';
 import Video from 'react-native-video';
 import styles from "./UploadScreenStyles";
@@ -222,7 +222,7 @@ class UploadScreen extends Component<Props, State> {
 
   render() {
     return (
-      <View style={styles.background}>
+      <SafeAreaView style={styles.background}>
         <View style={styles.wrapper}>
           <View style={styles.videoWrapper}>
             { this.state.hasVideo ?
@@ -278,7 +278,7 @@ class UploadScreen extends Component<Props, State> {
           </TouchableOpacity>
 
         </View>
-      </View>
+      </SafeAreaView>
     );
   }
 }

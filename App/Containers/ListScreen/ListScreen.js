@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from "react";
-import { Text, View, ScrollView, AsyncStorage, TextInput, Animated, TouchableOpacity } from "react-native";
+import { Text, View, ScrollView, AsyncStorage, TextInput, Animated, TouchableOpacity, SafeAreaView } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import LinearGradient from "react-native-linear-gradient";
 import ListElement from "../../Components/ListElement/ListElement";
@@ -314,10 +314,12 @@ class ListScreen extends Component<Props, State> {
 
   render() {
     return (
-      <View style={styles.wrapper}>
-        {this.renderFilters()} 
-        {this.renderIdeasList()}
-      </View>
+      <SafeAreaView style={{ flex: 1, backgroundColor: Colors.white }}>
+        <View  style={styles.wrapper}>
+          {this.renderFilters()} 
+          {this.renderIdeasList()}
+        </View>
+      </SafeAreaView>
     );
   }
 }

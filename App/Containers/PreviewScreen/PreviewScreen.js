@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from "react";
-import { Text, View, ScrollView, AsyncStorage, Image } from "react-native";
+import { Text, View, ScrollView, AsyncStorage, Image, SafeAreaView } from "react-native";
 import Video from 'react-native-video';
 
 import styles from "./PreviewScreenStyles";
@@ -51,7 +51,7 @@ class PreviewScreen extends Component<Props, State> {
 
   render() {
     return (
-      <View style={styles.background}>
+      <SafeAreaView style={styles.background}>
         <View style={styles.wrapper}>
           <View style={styles.header}>
             <View style={styles.headerLeftContainer}>
@@ -79,7 +79,7 @@ class PreviewScreen extends Component<Props, State> {
             {this.renderTags()}
           </View>
         </View>
-      </View>
+      </SafeAreaView>
     );
   }
 }
