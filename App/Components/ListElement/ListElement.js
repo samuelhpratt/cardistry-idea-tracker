@@ -6,7 +6,7 @@ import styles from "./ListElementStyles";
 
 type Props = {
   idea: Object,
-  onPress: Object => {},
+  onPress: Function,
 }
 
 class ListElement extends Component<Props> {
