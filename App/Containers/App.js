@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
-import { Text, View, Animated, Easing, StatusBar, Dimensions } from 'react-native';
+import { Text, View, Animated, Easing, StatusBar, Dimensions, Platform } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import AppNavigation from '../Navigation/AppNavigation';
 import { Colors } from "../Themes";
@@ -14,6 +14,7 @@ type State = {
   splashScale: Animated.Value,
   splashOpacity: Animated.Value,
   splashVisible: boolean,
+  statusColor: string,
 }
 
 class App extends Component<Props, State> {
@@ -21,9 +22,10 @@ class App extends Component<Props, State> {
     super(props);
 
     this.state = {
-      splashScale: new Animated.Value(Math.ceil(Dimensions.get('window').height/28)),
+      splashScale: new Animated.Value(Math.ceil(Dimensions.get('window').height/320)),
       splashOpacity: new Animated.Value(1),
       splashVisible: true,
+      statusColor: Colors.white
     }
   }
 
@@ -44,8 +46,8 @@ class App extends Component<Props, State> {
           this.state.splashScale,
           {
             delay: 400, // wait for splash to fade out
-            toValue: 1,
-            duration: 400,
+            toValue: 0.1,
+            duration: 450,
           }
         ),
         Animated.timing(
@@ -65,15 +67,17 @@ class App extends Component<Props, State> {
     return (
       <View style={{ flex: 1 }}>
         <StatusBar 
-          backgroundColor={Colors.white}
+          translucent
+          backgroundColor={Colors.transparent}
           barStyle="dark-content"
         />
+        { Platform.OS === 'android' && <View style={{ height: StatusBar.currentHeight, backgroundColor: '#dcdee5' }}/>}
         <AppNavigation />
         { this.state.splashVisible && 
           <View 
             style={{ 
               position: 'absolute',
-              bottom: this.isIPhoneX() ? 46 : 15,
+              bottom: this.isIPhoneX() ? -206 : -237,
               left: 0,
               right: 0,
               alignItems: 'center',
@@ -83,9 +87,9 @@ class App extends Component<Props, State> {
               opacity={this.state.splashOpacity}
               style={{ 
                 backgroundColor: Colors.cameraButton,
-                width: 56,
-                height: 56,
-                borderRadius: 28,
+                width: 560,
+                height: 560,
+                borderRadius: 280,
                 transform: [
                   {
                     scale: this.state.splashScale

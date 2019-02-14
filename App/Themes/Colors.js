@@ -2,7 +2,7 @@
 
 const colors = {
   background: '#eff1f7',
-  transparent: 'rgba(255, 255, 255, 0)',
+  transparent: 'rgba(0, 0, 0, 0)',
   cameraButton: '#ff0a57',
   highlight: '#b793ff',
   lightGrey: '#acaeb7',
