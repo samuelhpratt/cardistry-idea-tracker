@@ -42,9 +42,9 @@ export default StyleSheet.create({
     flexDirection: "row",
   },
   tagBackground: {
-    width: 38,
-    height: 38,
-    borderRadius: 38 / 2,
+    width: 30,
+    height: 30,
+    borderRadius: 30 / 2,
     margin: 2,
     alignItems: 'center',
     justifyContent: 'center',
@@ -53,7 +53,7 @@ export default StyleSheet.create({
     color: 'rgba(0, 0, 0, 0.1)',
     textAlign: "center",
     textAlignVertical: "center",
-    fontSize: 16,
+    fontSize: 12,
     fontFamily: "InterUI-Regular",
   },
   rightButton: {

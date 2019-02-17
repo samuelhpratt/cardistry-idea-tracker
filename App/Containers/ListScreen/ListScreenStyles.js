@@ -45,8 +45,8 @@ export default StyleSheet.create({
     padding: 6,
   },
   tagBackground: {
-    height: 38,
-    borderRadius: 38 / 2,
+    height: 36,
+    borderRadius: 36 / 2,
     margin: 4,
     paddingLeft: 12,
     paddingRight: 12,
@@ -56,11 +56,15 @@ export default StyleSheet.create({
   tagText: {
     textAlign: "center",
     textAlignVertical: "center",
-    fontSize: 16,
+    fontSize: 12,
     fontFamily: "InterUI-Regular",
   },
   tagSelected: {
-    color: '#fff',
+    backgroundColor: Colors.white,
+    borderWidth: 2,
+    borderRadius: 36 / 2,
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   listContainer: {
     backgroundColor: Colors.background,

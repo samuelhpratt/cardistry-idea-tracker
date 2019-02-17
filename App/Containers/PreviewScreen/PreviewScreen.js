@@ -13,6 +13,7 @@ type Props = {
 
 type State = {
   idea: Object,
+  hasIdea: boolean,
   videoLoading: boolean,
 }
 
@@ -21,14 +22,16 @@ class PreviewScreen extends Component<Props, State> {
     super(props);
 
     this.state = {
-      idea: null,
+      idea: {},
+      hasIdea: false,
       videoLoading: false,
     }
   }
 
   componentDidMount = () => {
     this.setState({
-      'idea': this.props.navigation.getParam('idea'), 
+      idea: this.props.navigation.getParam('idea'), 
+      hasIdea: true,
     })
   }
 
@@ -37,7 +40,7 @@ class PreviewScreen extends Component<Props, State> {
   }
 
   renderTags = () => {
-    const tagList = this.state.idea?.tags.map(t => {
+    const tagList = this.state.idea.tags.map(t => {
       return (
         <View key={t.id} style={[styles.tagBackground, {backgroundColor: t.style.light}]}>
           <Text style={[styles.tagText, {color: t.style.dark}]}>
@@ -52,33 +55,34 @@ class PreviewScreen extends Component<Props, State> {
   render() {
     return (
       <SafeAreaView style={styles.background}>
-        <View style={styles.wrapper}>
-          <View style={styles.header}>
-            <View style={styles.headerLeftContainer}>
-              <Icon name="arrow-left" size={24} color="#000" onPress={() => this.props.navigation.goBack()}/>
+        {this.state.hasIdea && 
+          <View style={styles.wrapper}>
+            <View style={styles.header}>
+              <View style={styles.headerLeftContainer}>
+                <Icon name="arrow-left" size={24} color="#000" onPress={() => this.props.navigation.goBack()}/>
+              </View>
+                <Text style={styles.headerText}>{this.state.idea?.date}</Text>
+              <View style={styles.headerRightContainer}>
+                <Text style={styles.headerText}>{this.state.idea?.title}</Text>
+              </View>
             </View>
-            <Text style={styles.headerText}>{this.state.idea?.title}</Text>
-            <View style={styles.headerRightContainer}>
-              <Text style={styles.headerText}>{this.state.idea?.date}</Text>
+            <View style={styles.videoWrapper}>
+              <Video style={styles.video}
+                source={{uri: this.state.idea?.videoUri}}
+                onBuffer={() => {}} 
+                onError={(error) => {console.log(error)}}  
+                onLoad={() => this.onVideoLoad()}        
+                repeat={true}
+                resizeMode="cover"
+                paused={this.state.videoLoading}
+                muted={true}
+              />
+            </View>
+            <View style={styles.tagsWrapper}>
+              {this.renderTags()}
             </View>
           </View>
-          <View style={styles.videoWrapper}>
-            { this.state.idea != null &&
-            <Video style={styles.video}
-              source={{uri: this.state.idea?.videoUri}}
-              onBuffer={() => {}} 
-              onError={(error) => {console.log(error)}}  
-              onLoad={() => this.onVideoLoad()}        
-              repeat={true}
-              resizeMode="cover"
-              paused={this.state.videoLoading}
-              muted={true}
-            />}
-          </View>
-          <View style={styles.tagsWrapper}>
-            {this.renderTags()}
-          </View>
-        </View>
+        }
       </SafeAreaView>
     );
   }

@@ -84,16 +84,16 @@ export default StyleSheet.create({
   },
   tagBackground: {
     margin: 2,
-    width: 38,
-    height: 38,
-    borderRadius: 38 / 2,
+    width: 36,
+    height: 36,
+    borderRadius: 36 / 2,
     alignItems: 'center',
     justifyContent: 'center',
   },
   tagText: {
     textAlign: "center",
     textAlignVertical: "center",
-    fontSize: 16,
+    fontSize: 12,
     fontFamily: "InterUI-Regular",
   },
   tagSelected: {

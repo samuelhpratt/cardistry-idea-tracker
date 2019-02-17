@@ -18,7 +18,7 @@ export default StyleSheet.create({
     height: '100%',
     width: '100%',
     position: 'absolute',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
   },
   topBar: {
     backgroundColor: 'rgba(0, 0, 0, 0.35)',

@@ -50,8 +50,8 @@ export default StyleSheet.create({
     padding: 4,
   },
   tagBackground: {
-    height: 38,
-    borderRadius: 38 / 2,
+    height: 36,
+    borderRadius: 36 / 2,
     margin: 4,
     paddingLeft: 12,
     paddingRight: 12,
@@ -61,7 +61,7 @@ export default StyleSheet.create({
   tagText: {
     textAlign: "center",
     textAlignVertical: "center",
-    fontSize: 16,
+    fontSize: 14,
     fontFamily: "InterUI-Regular",
   },
 })

@@ -15,6 +15,7 @@ type Props = {
 type State = {
   flashOn: boolean,
   cameraIsFront: boolean,
+  recording: boolean,
 }
 
 class CameraScreen extends Component<Props, State> { 
@@ -22,18 +23,32 @@ class CameraScreen extends Component<Props, State> {
     super(props);
 
     this.state = {
-      flashOn: true,
+      flashOn: false,
       cameraIsFront: false,
+      recording: false,
     }
   }; 
 
+  async startRecording() {
+    this.setState({ recording: true });
+    // default to mp4 for android as codec is not set
+    const { uri, codec = "mp4" } = await this.camera.recordAsync();
+  }
+
   onBackPressed = () => {
+    this.camera.stopRecording();
     this.props.navigation.goBack(null)
   }
 
   onDirectionPressed = () => {
     this.setState(prevState => ({
       cameraIsFront: !prevState.cameraIsFront,
+    }))
+  }
+
+  onFlashPressed = () => {
+    this.setState(prevState => ({
+      flashOn: !prevState.flashOn,
     }))
   }
 
@@ -46,25 +61,26 @@ class CameraScreen extends Component<Props, State> {
           }}
           style={styles.preview}
           type={this.state.cameraIsFront ? RNCamera.Constants.Type.front : RNCamera.Constants.Type.back}
-          flashMode={this.state.flashOn ? RNCamera.Constants.FlashMode.on : RNCamera.Constants.FlashMode.off}
-          permissionDialogTitle={'Permission to use camera'}
-          permissionDialogMessage={'We need your permission to use your camera phone'}
+          flashMode={this.state.flashOn ? RNCamera.Constants.FlashMode.torch : RNCamera.Constants.FlashMode.off}
+          permissionDialogTitle={'Allow camera access?'}
+          permissionDialogMessage={'We need your permission to use your camera'}
+          onCameraReady={this.startRecording}
         />
         <View style={styles.overlayWrapper}>
-          {/* <View style={styles.topBar}>
+          <View style={styles.topBar}>
             <Icon 
               name="arrow-left" 
               size={28} 
               color={Colors.white} 
-              onPress={() => {}}
+              onPress={this.onBackPressed}
             />
-          </View> */}
+          </View>
           <View style={styles.bottomBar}>
             <Icon 
-              name="arrow-left"
+              name={this.state.flashOn ? "flash" : "flash-off"}
               size={28} 
               color={Colors.white} 
-              onPress={this.onBackPressed}
+              onPress={this.onFlashPressed}
             />
             <View style={styles.cameraButtonWrapper}>
               <View style={styles.cameraButton}>

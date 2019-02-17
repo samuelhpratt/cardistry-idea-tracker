@@ -16,7 +16,7 @@ class ListElement extends Component<Props> {
   };
 
   elementPressed = () => {
-    this.props.onPress(this.props.idea)
+    this.props.onPress()
   }
 
   renderTags = () => {

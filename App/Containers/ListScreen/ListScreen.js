@@ -115,12 +115,12 @@ class ListScreen extends Component<Props, State> {
   }
 
   loadList = () => {
-    this.setState({ "fetchingIdeaData": true }, () => {
+    this.setState({ fetchingIdeaData: true }, () => {
       AsyncStorage.getItem('ideaData')
       .then((value) => {
         const loadedIdeaData = JSON.parse(value) 
         if (value != null) {
-          this.setState({ 'ideaData': loadedIdeaData, "fetchingIdeaData": false, "hasIdeaData": true },
+          this.setState({ ideaData: loadedIdeaData, fetchingIdeaData: false, hasIdeaData: true },
             () => (this.updateListFilters()))
         } else {
           AsyncStorage.setItem('lastId', JSON.stringify(-1))
@@ -142,7 +142,7 @@ class ListScreen extends Component<Props, State> {
 
     if (this.state.searchString != '') {
       searchedIdeas = filteredIdeas.filter(
-        i => (i.title.toLowerCase().indexOf(this.state.searchString?.toLowerCase()) > -1
+        i => (i.title.toLowerCase().indexOf(this.state.searchString.toLowerCase()) > -1
       ))
     } else {
       searchedIdeas = filteredIdeas
@@ -209,22 +209,27 @@ class ListScreen extends Component<Props, State> {
   }
 
   renderTagsList = () => {
-    const tagList = this.state.tagData?.map(t => {
-      return (
-        <TouchableOpacity
-          key={t.id} 
-          style={[styles.tagBackground, {backgroundColor: t.style.light}]} 
-          onPress={() => this.tagFilterPressed(t.id)}
-        >
-          <Text
-            style={[styles.tagText, {color: t.style.dark}, this.state.tagFilter.includes(t.id)? styles.tagSelected : null]} 
+    if (this.state.tagData.length > 0) {
+      const tagList = this.state.tagData.map(t => {
+        return (
+          <TouchableOpacity
+            key={t.id} 
+            style={[styles.tagBackground, this.state.tagFilter.includes(t.id)? 
+              [{ borderColor: t.style.light }, styles.tagSelected] :
+              { backgroundColor: t.style.light }
+            ]} 
+            onPress={() => this.tagFilterPressed(t.id)}
           >
-            {t.title}
-          </Text>
-        </TouchableOpacity>
-      )
-    })
-    return (tagList)
+            <Text
+              style={[styles.tagText, {color: t.style.dark}]} 
+            >
+              {t.title}
+            </Text>
+          </TouchableOpacity>
+        )
+      })
+      return (tagList)
+    }
   }
 
   renderFilters = () => {
@@ -264,17 +269,18 @@ class ListScreen extends Component<Props, State> {
   renderIdeasList = () => {
     if (this.state.hasIdeaData && !this.state.fetchingIdeaData) {
       const ideaList = this.state.ideasToDisplay.map(e => {
+        const idea = {
+          id: e.id,
+          title: e.title,
+          thumbnail: e.thumbnail,
+          date: e.date,
+          tags: this.state.tagData.filter(t => (e.tags.includes(t.id))),
+          videoUri: e.videoUri,
+        }
         return (
           <ListElement key={e.id}
-            idea={{
-              id: e.id,
-              title: e.title,
-              thumbnail: e.thumbnail,
-              date: e.date,
-              tags: this.state.tagData.filter(t => (e.tags.includes(t.id))),
-              videoUri: e.videoUri,
-            }}
-            onPress={this.onListElementPressed}            
+            idea={idea}
+            onPress={() => this.onListElementPressed(idea)}            
           />
         )
       })

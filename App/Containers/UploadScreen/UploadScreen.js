@@ -202,7 +202,7 @@ class UploadScreen extends Component<Props, State> {
   }
 
   renderTagsList = () => {
-    const tagList = this.state.tagData.map(t => {
+    const tagList = this.state.tagData.map((t) => {
       return (
         <TouchableOpacity
           key={t.id} 
